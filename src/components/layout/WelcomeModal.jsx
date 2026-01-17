@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Upload, Save, User, Sparkles, Key, ArrowRight, BrainCircuit } from 'lucide-react';
+import { Upload, Save, User, Key, ArrowRight, BrainCircuit } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function WelcomeModal() {
@@ -47,7 +47,6 @@ export default function WelcomeModal() {
             return;
         }
 
-        // Save Profile Data
         const profileData = {
             name: name,
             about: about || 'Merhaba! Ben resim çizmeyi çok seviyorum.',
@@ -66,7 +65,6 @@ export default function WelcomeModal() {
         localStorage.setItem('isProfileSetupComplete', 'true');
         window.dispatchEvent(new Event('logoChange'));
 
-        // Move to AI Info step
         setStep(2);
     };
 
@@ -78,25 +76,21 @@ export default function WelcomeModal() {
     const goToSettings = () => {
         setIsOpen(false);
         navigate('/settings');
-        // We don't reload here so navigate works, but settings page handles its own state
     };
 
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
-            <div className="bg-white rounded-3xl p-6 w-full max-w-lg shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div className="bg-white rounded-3xl p-5 w-full max-w-lg shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
 
                 {step === 1 ? (
-                    <>
+                    <div className="animate-in fade-in duration-500">
                         {/* Decorative Background blob */}
                         <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
                         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-                        <div className="text-center mb-6 relative z-10">
-                            <div className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-2 text-white shadow-lg animate-bounce">
-                                <Sparkles size={28} />
-                            </div>
+                        <div className="text-center mb-4 relative z-10">
                             <h2 className="text-2xl font-heading font-bold text-dark mb-1">Hoş Geldin Ressam! 👋</h2>
                             <p className="text-sm text-gray-500 font-medium">Profilini hemen oluştur!</p>
                         </div>
@@ -106,14 +100,14 @@ export default function WelcomeModal() {
                             <div className="flex flex-col items-center">
                                 <div
                                     onClick={() => fileInputRef.current?.click()}
-                                    className="relative w-24 h-24 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-gray-50 transition-all group overflow-hidden"
+                                    className="relative w-20 h-20 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-gray-50 transition-all group overflow-hidden"
                                 >
                                     {preview && preview !== '/img/logo_new.jpg' ? (
                                         <img src={preview} alt="Preview" className="w-full h-full object-cover" />
                                     ) : (
                                         <div className="text-center p-2">
                                             <div className="bg-blue-50 text-blue-500 p-1.5 rounded-full inline-block mb-1 group-hover:scale-110 transition-transform">
-                                                <Upload size={20} />
+                                                <Upload size={18} />
                                             </div>
                                             <p className="text-[10px] text-gray-400 font-bold">Fotoğraf</p>
                                         </div>
@@ -130,88 +124,74 @@ export default function WelcomeModal() {
 
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="col-span-2">
-                                    <label className="block text-xs font-bold text-gray-500 mb-1 ml-1">Adın Ne?</label>
+                                    <label className="block text-[10px] font-bold text-gray-500 mb-1 ml-1">Adın Ne?</label>
                                     <div className="relative">
-                                        <User className="absolute top-1/2 -translate-y-1/2 left-3 text-gray-400" size={16} />
+                                        <User className="absolute top-1/2 -translate-y-1/2 left-3 text-gray-400" size={14} />
                                         <input
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             placeholder="Örn: Asaf, Ayşe..."
-                                            className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl pl-10 pr-3 py-3 font-bold text-dark focus:border-primary focus:outline-none transition-colors"
+                                            className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl pl-10 pr-3 py-2.5 font-bold text-dark focus:border-primary focus:outline-none transition-colors text-sm"
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-500 mb-1 ml-1">Yaşın Kaç?</label>
+                                    <label className="block text-[10px] font-bold text-gray-500 mb-1 ml-1">Yaşın Kaç?</label>
                                     <input
                                         type="text"
                                         value={age}
                                         onChange={(e) => setAge(e.target.value)}
                                         placeholder="8"
-                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-3 font-bold text-dark focus:border-primary focus:outline-none transition-colors"
+                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-2.5 font-bold text-dark focus:border-primary focus:outline-none transition-colors text-sm"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-bold text-gray-500 mb-1 ml-1">Sevdiğin Renk?</label>
+                                    <label className="block text-[10px] font-bold text-gray-500 mb-1 ml-1">Sevdiğin Renk?</label>
                                     <input
                                         type="text"
                                         value={favColor}
                                         onChange={(e) => setFavColor(e.target.value)}
                                         placeholder="Mavi"
-                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-3 font-bold text-dark focus:border-primary focus:outline-none transition-colors"
+                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-2.5 font-bold text-dark focus:border-primary focus:outline-none transition-colors text-sm"
                                     />
                                 </div>
                                 <div className="col-span-2">
-                                    <label className="block text-xs font-bold text-gray-500 mb-1 ml-1">En Sevdiğin Hayvan?</label>
+                                    <label className="block text-[10px] font-bold text-gray-500 mb-1 ml-1">En Sevdiğin Hayvan?</label>
                                     <input
                                         type="text"
                                         value={favAnimal}
                                         onChange={(e) => setFavAnimal(e.target.value)}
                                         placeholder="Kedi, Köpek..."
-                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-3 font-bold text-dark focus:border-primary focus:outline-none transition-colors"
+                                        className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-2.5 font-bold text-dark focus:border-primary focus:outline-none transition-colors text-sm"
                                     />
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 mb-1 ml-1">Kendinden Bahset</label>
-                                <textarea
-                                    value={about}
-                                    onChange={(e) => setAbout(e.target.value)}
-                                    rows="2"
-                                    placeholder="Ben resim yapmayı çok severim..."
-                                    className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-3 py-2 font-medium text-dark focus:border-primary focus:outline-none transition-colors resize-none text-sm"
-                                />
-                            </div>
-
                             <button
                                 onClick={handleSaveProfile}
-                                className="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-primary-dark hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2 text-lg"
+                                className="w-full bg-primary text-white font-bold py-3.5 rounded-xl shadow-lg hover:bg-primary-dark hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2 text-lg"
                             >
-                                <Save size={24} />
+                                <Save size={20} />
                                 Devam Et
                             </button>
                         </div>
-                    </>
+                    </div>
                 ) : (
                     <div className="animate-in slide-in-from-right duration-500">
-                        <div className="text-center mb-8">
-                            <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-inner">
-                                <BrainCircuit size={40} />
+                        <div className="text-center mb-6">
+                            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner">
+                                <BrainCircuit size={32} />
                             </div>
-                            <h2 className="text-2xl font-heading font-bold text-dark mb-2">Yapay Zeka Öğretmenin! 👩‍🎨</h2>
-                            <p className="text-gray-500 font-medium">Resimlerini yorumlamamı ister misin?</p>
+                            <h2 className="text-2xl font-heading font-bold text-dark mb-1">Yapay Zeka Öğretmenin! 👩‍🎨</h2>
+                            <p className="text-sm text-gray-500 font-medium">Resimlerini yorumlamamı ister misin?</p>
                         </div>
 
-                        <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 mb-8">
+                        <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-4 mb-6">
                             <p className="text-blue-800 text-sm leading-relaxed font-bold">
-                                🌟 Öğretmenin resimlerini sesli yorumlaması ve sana yeni fikirler vermesi için ücretsiz bir <span className="text-blue-600 underline">API Anahtarı</span> alman gerekiyor.
-                            </p>
-                            <p className="text-blue-700/70 text-xs mt-3 italic font-medium">
-                                (Eğer anahtarın yoksa sadece çizimlerini kaydedebilirsin.)
+                                🌟 Öğretmenin resimlerini sesli yorumlaması için ücretsiz bir <span className="text-blue-600 underline text-blue-700">API Anahtarı</span> alman gerekiyor.
                             </p>
                         </div>
 
