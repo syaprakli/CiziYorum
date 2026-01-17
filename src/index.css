@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Outfit:wght@400;700&display=swap');
+
+:root {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  background-color: #f8fafc;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 100vh;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@theme {
+  --color-primary: #6C5CE7;
+  --color-secondary: #00CEC9;
+  --color-accent: #FF7675;
+  --color-dark: #2D3436;
+  --color-light: #DFE6E9;
+  --color-surface: #FFFFFF;
+
+  --font-sans: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  --font-heading: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+}

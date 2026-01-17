@@ -1,0 +1,26 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Adım 3: Yüz Detayları</title>
+  <rect fill="#ffffff" id="canvas_background" height="302" width="402" y="-1" x="-1"/>
+  <!-- Head -->
+  <ellipse stroke="#000" ry="100" rx="100" id="head" cy="150" cx="200" stroke-width="5" fill="#f1c40f" fill-opacity="0.2"/>
+  <!-- Ears -->
+  <path stroke="#000" id="ear_l" d="m130,80 l0,-50 l50,25" stroke-width="5" fill="#f1c40f" fill-opacity="0.2"/>
+  <path stroke="#000" id="ear_r" d="m270,80 l0,-50 l-50,25" stroke-width="5" fill="#f1c40f" fill-opacity="0.2"/>
+  <!-- Eyes -->
+  <circle cx="160" cy="130" r="10" fill="#000"/>
+  <circle cx="240" cy="130" r="10" fill="#000"/>
+  <!-- Nose -->
+  <path stroke="#000" d="m190,160 l20,0 l-10,10 z" fill="#e74c3c"/>
+  <!-- Mouth -->
+  <path stroke="#000" d="m200,170 q-10,10 -20,0" stroke-width="3" fill="none"/>
+  <path stroke="#000" d="m200,170 q10,10 20,0" stroke-width="3" fill="none"/>
+  <!-- Whiskers -->
+  <line x1="120" y1="160" x2="80" y2="150" stroke="#000" stroke-width="2"/>
+  <line x1="120" y1="170" x2="80" y2="180" stroke="#000" stroke-width="2"/>
+  <line x1="280" y1="160" x2="320" y2="150" stroke="#000" stroke-width="2"/>
+  <line x1="280" y1="170" x2="320" y2="180" stroke="#000" stroke-width="2"/>
+
+  <text x="50%" y="280" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#555">3. Burun, bıyıklar ve Renk!</text>
+ </g>
+</svg>

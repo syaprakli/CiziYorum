@@ -1,0 +1,27 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body (Background) -->
+  <path d="M100,140 Q100,180 140,180 Q180,180 180,140" fill="none" stroke="black" stroke-width="3"/>
+  
+  <!-- Head -->
+  <g fill="white"> <!-- Fill head to cover body line overlap -->
+    <path d="M60,100 Q60,60 100,60 Q140,60 140,100 Q140,140 100,140 Q60,140 60,100 z" stroke="black" stroke-width="3"/>
+  </g>
+  <path d="M60,80 Q40,70 50,90" fill="white" stroke="black" stroke-width="3"/> 
+  <path d="M140,80 Q160,70 150,90" fill="white" stroke="black" stroke-width="3"/>
+  <path d="M80,60 Q75,40 85,50" fill="none" stroke="black" stroke-width="3"/>
+  <path d="M120,60 Q125,40 115,50" fill="none" stroke="black" stroke-width="3"/>
+  
+  <!-- Face Details -->
+  <circle cx="85" cy="90" r="5" fill="black"/>
+  <circle cx="115" cy="90" r="5" fill="black"/>
+  <path d="M80,120 Q100,130 120,120" fill="none" stroke="black" stroke-width="2"/>
+  <circle cx="90" cy="110" r="2" fill="black"/>
+  <circle cx="110" cy="110" r="2" fill="black"/>
+
+  <!-- Step 4: Final Touches -->
+  <path d="M160,150 Q170,140 165,160" fill="none" stroke="black" stroke-width="2"/> <!-- Spot -->
+   <!-- Bell -->
+  <circle cx="100" cy="145" r="8" fill="gold" stroke="black" stroke-width="1"/>
+  
+  <text x="10" y="20" font-family="Arial" font-size="12" fill="gray">Adım 4: Tamamlandı!</text>
+</svg>

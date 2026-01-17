@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Head -->
+  <path d="M60,100 Q60,60 100,60 Q140,60 140,100 Q140,140 100,140 Q60,140 60,100 z" fill="none" stroke="black" stroke-width="3"/>
+  <path d="M60,80 Q40,70 50,90" fill="none" stroke="black" stroke-width="3"/> 
+  <path d="M140,80 Q160,70 150,90" fill="none" stroke="black" stroke-width="3"/>
+  <path d="M80,60 Q75,40 85,50" fill="none" stroke="black" stroke-width="3"/>
+  <path d="M120,60 Q125,40 115,50" fill="none" stroke="black" stroke-width="3"/>
+  
+  <!-- Step 3: Face Details -->
+  <circle cx="85" cy="90" r="5" fill="black"/> <!-- Left Eye -->
+  <circle cx="115" cy="90" r="5" fill="black"/> <!-- Right Eye -->
+  <path d="M80,120 Q100,130 120,120" fill="none" stroke="black" stroke-width="2"/> <!-- Mouth -->
+  <circle cx="90" cy="110" r="2" fill="black"/> <!-- Left Nostril -->
+  <circle cx="110" cy="110" r="2" fill="black"/> <!-- Right Nostril -->
+  <text x="10" y="20" font-family="Arial" font-size="12" fill="gray">Adım 3: Yüz</text>
+</svg>

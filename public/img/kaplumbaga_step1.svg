@@ -1,0 +1,6 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+ <rect fill="#fff" height="300" width="400"/>
+ <!-- Shell -->
+ <path d="M100 200 Q200 100 300 200 Z" stroke="#000" stroke-width="5" fill="#2ecc71"/>
+ <text x="200" y="280" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#555">1. Yarım daire bir kabuk çiz</text>
+</svg>
