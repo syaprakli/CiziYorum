@@ -263,8 +263,8 @@ export default function Settings() {
                                     const file = e.target.files[0];
                                     if (file) {
                                         // 1MB Limit Check
-                                        if (file.size > 1024 * 1024) {
-                                            alert("Resim çok büyük! Lütfen 1MB'dan küçük bir resim seç.");
+                                        if (file.size > 5 * 1024 * 1024) {
+                                            alert("Resim çok büyük! Lütfen 5MB'dan küçük bir resim seç.");
                                             return;
                                         }
 

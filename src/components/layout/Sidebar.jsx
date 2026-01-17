@@ -34,8 +34,8 @@ export default function Sidebar({ isOpen, onClose }) {
                 onClick={onClose}
             />
 
-            <aside className={`fixed inset-y-0 left-0 h-full bg-white shadow-2xl rounded-r-3xl flex flex-col p-6 z-40 transition-transform duration-300 ease-out transform
-                w-80 lg:w-96 lg:static lg:translate-x-0
+            <aside className={`fixed top-0 left-0 h-[100dvh] bg-white shadow-2xl rounded-r-3xl flex flex-col p-3 z-40 transition-transform duration-300 ease-out transform
+                w-60 lg:w-64 lg:static lg:translate-x-0
                 ${isOpen ? 'translate-x-0' : '-translate-x-full'}
             `}>
                 {/* Mobile Close Button */}
@@ -47,7 +47,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 </button>
 
                 {/* Logo Area */}
-                <div className="flex flex-col items-center mb-6 mt-4 lg:mt-0">
+                <div className="flex flex-col items-center mb-4 mt-4 lg:mt-0">
                     <BrandLogo />
                 </div>
 

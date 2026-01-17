@@ -15,8 +15,8 @@ export default {
                 surface: '#FFFFFF',
             },
             fontFamily: {
-                sans: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
-                heading: ['"Comic Sans MS"', '"Comic Sans"', 'cursive', 'sans-serif'],
+                sans: ['"Fredoka"', 'sans-serif'],
+                heading: ['"Fredoka"', 'sans-serif'],
             },
             borderRadius: {
                 'xl': '1rem',

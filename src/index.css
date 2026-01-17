@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Outfit:wght@400;700&display=swap');
 
 :root {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-family: 'Fredoka', sans-serif;
   background-color: #f8fafc;
   overflow-x: hidden;
 }
@@ -38,6 +38,6 @@ body {
   --color-light: #DFE6E9;
   --color-surface: #FFFFFF;
 
-  --font-sans: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
-  --font-heading: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+  --font-sans: "Fredoka", sans-serif;
+  --font-heading: "Fredoka", sans-serif;
 }

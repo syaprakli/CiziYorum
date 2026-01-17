@@ -121,9 +121,9 @@ export function BrandLogo() {
     }, []);
 
     return (
-        <div className="relative w-48 h-48 flex items-center justify-center">
+        <div className="relative w-32 h-32 flex items-center justify-center">
             {/* Central Image */}
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
+            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
                 <img
                     src={logo}
                     className="w-full h-full object-cover"

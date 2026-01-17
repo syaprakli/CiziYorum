@@ -4,10 +4,10 @@ import { VIDEO_TUTORIALS } from '../data/education';
 
 // Artist Cover Image Mapping
 const ARTIST_COVERS = {
-    "Chut Chit": "/videos/klasik/Chut Chit/Chut Chit.jpg",
-    "Daribodrawing": "/videos/klasik/Daribodrawing/daribodrawing.jpg",
-    "Guitar İllustrain": "/videos/dijital/Guitar İllustrain/guitar_illustration.jpg",
-    "Neda Sadrettin": "/videos/dijital/Neda Sadrettin/Neda.webp",
+    "Chut Chit": "videos/klasik/Chut Chit/Chut Chit.jpg",
+    "Daribodrawing": "videos/klasik/Daribodrawing/daribodrawing.jpg",
+    "Guitar İllustrain": "videos/dijital/Guitar İllustrain/guitar_illustration.jpg",
+    "Neda Sadrettin": "videos/dijital/Neda Sadrettin/Neda.webp",
     "Çizim Atölyesi": null // Fallback if needed
 };
 
