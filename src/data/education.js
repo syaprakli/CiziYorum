@@ -267,121 +267,66 @@ export const STEP_TUTORIALS = [
 ];
 
 export const VIDEO_TUTORIALS = [
-    {
-        id: 'insta-1',
-        title: "Sevimli Karakter Çizimi",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DQyxHSnk4u2/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DQyxHSnk4u2/",
-        difficulty: "Kolay",
-        duration: "1 dk"
-    },
-    {
-        id: 'insta-2',
-        title: "Hızlı Çizim Tekniği",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DSbQ8eNElgT/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DSbQ8eNElgT/",
-        difficulty: "Orta",
-        duration: "1 dk"
-    },
-    {
-        id: 'insta-3',
-        title: "Eğlenceli Eskiz",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DLOThvSTXG8/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DLOThvSTXG8/",
-        difficulty: "Kolay",
-        duration: "1 dk"
-    },
-    {
-        id: 'insta-4',
-        title: "Karakter Tasarımı",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DKveqrbTR6m/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DKveqrbTR6m/",
-        difficulty: "İleri",
-        duration: "1 dk"
-    },
-    {
-        id: 'insta-5',
-        title: "Renkli Çizim",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DFrE17wSrHj/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DFrE17wSrHj/",
-        difficulty: "Orta",
-        duration: "1 dk"
-    },
-    {
-        id: 'insta-6',
-        title: "Sanat Atölyesi",
-        author: "Instagram Sanatçısı",
-        thumbnail: "https://instagram.com/p/DDs5mZ0zVuo/media/?size=l",
-        videoUrl: "https://www.instagram.com/p/DDs5mZ0zVuo/",
-        difficulty: "Kolay",
-        duration: "1 dk"
-    },
-    {
-        id: 'ZVNagNPpZ4Y',
-        title: "Sevimli Kaplumbağa",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/ZVNagNPpZ4Y/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=ZVNagNPpZ4Y",
-        difficulty: "Kolay",
-        duration: "5 dk"
-    },
-    {
-        id: 'TH88Rp9CmgE',
-        title: "Sevimli Çiçek",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/TH88Rp9CmgE/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=TH88Rp9CmgE",
-        difficulty: "Kolay",
-        duration: "4 dk"
-    },
-    {
-        id: 'R5sMbYL9kMQ',
-        title: "Aloe Vera",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/R5sMbYL9kMQ/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=R5sMbYL9kMQ",
-        difficulty: "Orta",
-        duration: "6 dk"
-    },
-    {
-        id: 'eaQoHePEkBo',
-        title: "Su Altında Yunus",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/eaQoHePEkBo/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=eaQoHePEkBo",
-        difficulty: "İleri",
-        duration: "8 dk"
-    },
-    {
-        id: 'ILiCS3b2sVU',
-        title: "Sevimli Yunus",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/ILiCS3b2sVU/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=ILiCS3b2sVU",
-        difficulty: "Orta",
-        duration: "7 dk"
-    },
-    {
-        id: 'vN5wu_Vq6IM',
-        title: "Sevimli Keçi",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/vN5wu_Vq6IM/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=vN5wu_Vq6IM",
-        difficulty: "Kolay",
-        duration: "5 dk"
-    },
-    {
-        id: '6LBiG-ThTdA',
-        title: "Sevimli Pikachu",
-        author: "Kolay Çizimler",
-        thumbnail: "https://img.youtube.com/vi/6LBiG-ThTdA/hqdefault.jpg",
-        videoUrl: "https://www.youtube.com/watch?v=6LBiG-ThTdA",
-        difficulty: "İleri",
-        duration: "10 dk"
-    }
+    // KLASİK - Chut Chit
+    { id: 'cc-1', title: "Ağaç Çizimi", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/agac2.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-2', title: "Bulut Çizimi", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/bulut.mp4", difficulty: "Kolay", category: 'classic' },
+    { id: 'cc-3', title: "Bulutlu Manzara", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/bulutlu.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-4', title: "Çalılık Çizimi", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/calilik.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-5', title: "Çam Ağacı", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/cam agaci.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-6', title: "Çimenlik Tablo", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/cimenliklitablo.mp4", difficulty: "İleri", category: 'classic' },
+    { id: 'cc-7', title: "Göl Manzarası", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/gol.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-8', title: "Mavi Ağaç", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/mavi agac.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'cc-9', title: "Tablo Çizimi", author: "Chut Chit", videoUrl: "/videos/klasik/Chut Chit/tablo.mp4", difficulty: "İleri", category: 'classic' },
+
+    // KLASİK - Daribodrawing
+    { id: 'dd-1', title: "Nokta Tekniği Ağaç", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/agac.nokta.mp4", difficulty: "İleri", category: 'classic' },
+    { id: 'dd-2', title: "Nokta Ağaç 2", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/agac_nokta2.mp4", difficulty: "İleri", category: 'classic' },
+    { id: 'dd-3', title: "Çizgi Ağaç", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/cizgi_agac.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'dd-4', title: "Çizgi Çiçek", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/cizgi_cicek.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'dd-5', title: "Çizgi Ev", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/cizgi_ev.mp4", difficulty: "Kolay", category: 'classic' },
+    { id: 'dd-6', title: "Çizgi İnsan", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/cizgi_insan.mp4", difficulty: "Orta", category: 'classic' },
+    { id: 'dd-7', title: "Çizgi Kadın", author: "Daribodrawing", videoUrl: "/videos/klasik/Daribodrawing/cizgi_kadin.mp4", difficulty: "Orta", category: 'classic' },
+
+    // KLASİK - Diğer
+    { id: 'misc-1', title: "Çimen Yapımı", author: "Çizim Atölyesi", videoUrl: "/videos/klasik/çimen yapiyorum..mp4", difficulty: "Kolay", category: 'classic' },
+
+    // DİJİTAL - Guitar İllustrain
+    { id: 'gi-1', title: "Aslan Çizimi", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/aslan.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-2', title: "Balina", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/balina.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-3', title: "Bandanalı Kız", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/bandanalikiz.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-4', title: "Erkek Çocuk", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/erkek cocuk.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-5', title: "Geyik", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/geyik.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-6', title: "Gözlüklü Kız", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/gozluklukiz.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-7', title: "Kardan Adam", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/kardan adam.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-8', title: "Kirpi", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/kirpi.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-9', title: "Köpek", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/kopek.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-10', title: "Santa", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/santa.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-11', title: "Şapkalı Kız", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/sapkalikiz.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-12', title: "Sevimli Çocuk", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/sevimlicocuk.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-13', title: "Tatlı Balina", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/tatli balina.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-14', title: "Tavşan", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/tavsan.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'gi-15', title: "Uyuyan Kaplan", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/uyuyan kaplan.mp4", difficulty: "İleri", category: 'digital' },
+    { id: 'gi-16', title: "Uyuyan Kedi", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/uyuyan kedi.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'gi-17', title: "Yengeç", author: "Guitar İllustrain", videoUrl: "/videos/dijital/Guitar İllustrain/yengec.mp4", difficulty: "Kolay", category: 'digital' },
+
+    // DİJİTAL - Neda Sadrettin
+    { id: 'ns-1', title: "Balon", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/balon.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-2', title: "Bandanalı Kız", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/bandanalikiz.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'ns-3', title: "Fare", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/fare.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-4', title: "Güneş ve Bulut", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/gunes ve bulut.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-5', title: "Hediye Paketi", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/hediyepaketi.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-6', title: "Kardan Adam", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/kardanadam.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-7', title: "Kirpi", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/kirpi.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-8', title: "Kız Bebek", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/kizbebek.mp4", difficulty: "Orta", category: 'digital' },
+    { id: 'ns-9', title: "Köpek Balığı", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/kopusbaligi.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-10', title: "Pasta", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/pasta.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-11', title: "Penguen", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/penguen.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-12', title: "Sevimli Arı", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimli ari.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-13', title: "Sevimli Canavar", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimli canavar.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-14', title: "Sevimli Fok", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimli fok.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-15', title: "Sevimli Kedi", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimli kedi.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-16', title: "Sevimli Köpek", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimliKopek.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-17', title: "Sevimli Bebek", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/sevimli_bebek.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-18', title: "Tavşan", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/tavsan.mp4", difficulty: "Kolay", category: 'digital' },
+    { id: 'ns-19', title: "Temel Şekiller", author: "Neda Sadrettin", videoUrl: "/videos/dijital/Neda Sadrettin/temel sekille ogreniyorum.mp4", difficulty: "Kolay", category: 'digital' }
 ];
