@@ -140,11 +140,11 @@ export default function StepByStep() {
                 </div>
             )}
 
-            {/* Step Viewer (Focus Mode) */}
+            {/* Step Viewer (Focus Mode) - Scrollable if needed */}
             {activeTutorial && isPrepared && (
-                <div className="fixed inset-0 z-50 bg-white flex flex-col">
-                    {/* Top Bar */}
-                    <div className="bg-white border-b px-6 py-4 flex justify-between items-center shadow-sm">
+                <div className="fixed inset-0 z-50 bg-white flex flex-col overflow-y-auto">
+                    {/* Top Bar - Sticky */}
+                    <div className="bg-white border-b px-6 py-4 flex justify-between items-center shadow-sm sticky top-0 z-20">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={handleClose}
@@ -170,9 +170,9 @@ export default function StepByStep() {
                     </div>
 
                     {/* Main Content Area */}
-                    <div className="flex-1 flex flex-col overflow-hidden">
-                        {/* Image - Center Stage */}
-                        <div className="flex-1 bg-gray-50 relative flex items-center justify-center p-4 overflow-hidden">
+                    <div className="flex-1 flex flex-col">
+                        {/* Image - Center Stage - Huge area */}
+                        <div className="min-h-[80vh] bg-gray-50 relative flex items-center justify-center p-0 overflow-hidden">
                             {/* Grid Pattern Background */}
                             <div className="absolute inset-0 opacity-[0.05]"
                                 style={{
@@ -184,7 +184,8 @@ export default function StepByStep() {
                             <img
                                 src={getAssetPath(activeTutorial.steps[currentStep].img)}
                                 alt={`Step ${currentStep + 1}`}
-                                className="max-w-full max-h-full object-contain drop-shadow-2xl bg-white p-4 rounded-2xl"
+                                className="w-full h-full object-contain drop-shadow-2xl bg-white rounded-2xl p-2"
+                                style={{ maxHeight: '85vh' }}
                             />
                         </div>
 
