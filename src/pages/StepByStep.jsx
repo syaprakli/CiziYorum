@@ -42,6 +42,16 @@ export default function StepByStep() {
         setIsPrepared(false);
     };
 
+    // Helper to resolve asset paths correctly on GitHub Pages
+    const getAssetPath = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path; // External link
+        // Clean double slashes if base url ends with / and path starts with /
+        const base = import.meta.env.BASE_URL;
+        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+        return `${base}${cleanPath}`;
+    };
+
     return (
         <div className="max-w-6xl mx-auto pb-10">
             {/* Header */}
@@ -61,7 +71,7 @@ export default function StepByStep() {
                         >
                             <div className="relative rounded-2xl overflow-hidden aspect-square mb-5 bg-gray-50 flex items-center justify-center p-4">
                                 {tutorial.thumbnail ? (
-                                    <img src={tutorial.thumbnail} alt={tutorial.title} className="w-full h-full object-contain" />
+                                    <img src={getAssetPath(tutorial.thumbnail)} alt={tutorial.title} className="w-full h-full object-contain" />
                                 ) : (
                                     <BookOpen className="text-blue-300" size={64} />
                                 )}
@@ -172,7 +182,7 @@ export default function StepByStep() {
                             ></div>
 
                             <img
-                                src={activeTutorial.steps[currentStep].img}
+                                src={getAssetPath(activeTutorial.steps[currentStep].img)}
                                 alt={`Step ${currentStep + 1}`}
                                 className="max-w-full max-h-full object-contain drop-shadow-2xl bg-white p-4 rounded-2xl"
                             />

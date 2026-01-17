@@ -65,17 +65,27 @@ export default function VideoTutorials() {
     const currentArtists = view !== 'menu' ? getArtistsByCategory(view) : [];
     const currentVideos = selectedArtist ? getArtistVideos() : [];
 
+    // Helper to resolve asset paths correctly on GitHub Pages
+    const getAssetPath = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path; // External link
+        // Clean double slashes if base url ends with / and path starts with /
+        const base = import.meta.env.BASE_URL;
+        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+        return `${base}${cleanPath}`;
+    };
+
     return (
         <div className="max-w-6xl mx-auto pb-10">
             {/* Header Area */}
-            <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-3xl p-8 shadow-soft text-white mb-8 text-center relative overflow-hidden">
+            <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-3xl p-6 sm:p-8 shadow-soft text-white mb-8 text-center relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full transform translate-x-10 -translate-y-10" />
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full transform -translate-x-5 translate-y-5" />
 
                 {view === 'menu' ? (
                     <>
-                        <h1 className="text-4xl font-heading font-bold mb-2 relative z-10">Video Atölyesi 🎥</h1>
-                        <p className="text-white/90 font-medium text-lg relative z-10">İzle, öğren ve sen de çiz!</p>
+                        <h1 className="text-3xl sm:text-4xl font-heading font-bold mb-2 relative z-10">Video Atölyesi 🎥</h1>
+                        <p className="text-white/90 font-medium text-base sm:text-lg relative z-10">İzle, öğren ve sen de çiz!</p>
                     </>
                 ) : (
                     <div className="relative z-10 flex items-center justify-center gap-4">
@@ -86,10 +96,10 @@ export default function VideoTutorials() {
                             <ChevronLeft size={24} />
                         </button>
                         <div>
-                            <h1 className="text-3xl font-heading font-bold mb-1">
+                            <h1 className="text-2xl sm:text-3xl font-heading font-bold mb-1">
                                 {selectedArtist ? selectedArtist : (view === 'digital' ? 'Dijital Çizim' : 'Klasik Çizim')}
                             </h1>
-                            <p className="text-white/90 font-medium">
+                            <p className="text-white/90 font-medium text-sm sm:text-base">
                                 {selectedArtist ? 'Eğitim Videoları' : 'Sanatçını Seç ve Başla!'}
                             </p>
                         </div>
@@ -99,29 +109,29 @@ export default function VideoTutorials() {
 
             {/* VIEW 1: Main Menu (Digital vs Classic) */}
             {view === 'menu' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto px-4 sm:px-0">
                     <div
                         onClick={() => setView('digital')}
-                        className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-pop transition-all cursor-pointer group border-b-8 border-purple-500 hover:-translate-y-2"
+                        className="bg-white rounded-3xl p-6 sm:p-8 shadow-soft hover:shadow-pop transition-all cursor-pointer group border-b-8 border-purple-500 hover:-translate-y-2"
                     >
-                        <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
-                            <Monitor size={40} />
+                        <div className="bg-purple-100 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
+                            <Monitor size={32} className="sm:w-10 sm:h-10" />
                         </div>
-                        <h2 className="text-2xl font-bold text-dark mb-3">Dijital Çizim Öğreniyorum</h2>
-                        <p className="text-gray-500 font-medium leading-relaxed">
+                        <h2 className="text-xl sm:text-2xl font-bold text-dark mb-3">Dijital Çizim Öğreniyorum</h2>
+                        <p className="text-gray-500 font-medium leading-relaxed text-sm sm:text-base">
                             Tablet ve bilgisayar ile çizim yapmanın sırları.
                         </p>
                     </div>
 
                     <div
                         onClick={() => setView('classic')}
-                        className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-pop transition-all cursor-pointer group border-b-8 border-orange-500 hover:-translate-y-2"
+                        className="bg-white rounded-3xl p-6 sm:p-8 shadow-soft hover:shadow-pop transition-all cursor-pointer group border-b-8 border-orange-500 hover:-translate-y-2"
                     >
-                        <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
-                            <Pencil size={40} />
+                        <div className="bg-orange-100 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
+                            <Pencil size={32} className="sm:w-10 sm:h-10" />
                         </div>
-                        <h2 className="text-2xl font-bold text-dark mb-3">Klasik Çizim Öğreniyorum</h2>
-                        <p className="text-gray-500 font-medium leading-relaxed">
+                        <h2 className="text-xl sm:text-2xl font-bold text-dark mb-3">Klasik Çizim Öğreniyorum</h2>
+                        <p className="text-gray-500 font-medium leading-relaxed text-sm sm:text-base">
                             Kağıt, kalem ve boya kalemleri ile harikalar yarat.
                         </p>
                     </div>
@@ -130,7 +140,7 @@ export default function VideoTutorials() {
 
             {/* VIEW 2: Artist Folders Selection */}
             {view !== 'menu' && !selectedArtist && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {currentArtists.map((artist, index) => (
                         <div
                             key={index}
@@ -140,7 +150,7 @@ export default function VideoTutorials() {
                             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-4 bg-gray-100">
                                 {artist.cover ? (
                                     <img
-                                        src={artist.cover}
+                                        src={getAssetPath(artist.cover)}
                                         alt={artist.name}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
@@ -171,7 +181,7 @@ export default function VideoTutorials() {
 
             {/* VIEW 3: Video Grid for Selected Artist */}
             {selectedArtist && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {currentVideos.map((video) => (
                         <div
                             key={video.id}
@@ -182,7 +192,7 @@ export default function VideoTutorials() {
                             <div className="relative rounded-2xl overflow-hidden aspect-video mb-4 bg-black">
                                 {video.videoUrl.endsWith('.mp4') ? (
                                     <video
-                                        src={video.videoUrl + "#t=0.5"}
+                                        src={getAssetPath(video.videoUrl) + "#t=0.5"}
                                         className="w-full h-full object-cover"
                                         preload="metadata"
                                         muted
@@ -197,7 +207,7 @@ export default function VideoTutorials() {
                                 ) : (
                                     // Fallback for non-mp4 (YouTube etc)
                                     <img
-                                        src={video.thumbnail || "https://placehold.co/600x400?text=Video"}
+                                        src={video.thumbnail ? getAssetPath(video.thumbnail) : "https://placehold.co/600x400?text=Video"}
                                         alt={video.title}
                                         className="w-full h-full object-cover"
                                     />
@@ -251,7 +261,7 @@ export default function VideoTutorials() {
                         <div className="aspect-video w-full bg-black relative flex items-center justify-center overflow-hidden">
                             {selectedVideo.videoUrl.endsWith('.mp4') ? (
                                 <video
-                                    src={selectedVideo.videoUrl}
+                                    src={getAssetPath(selectedVideo.videoUrl)}
                                     controls
                                     autoPlay
                                     className="w-full h-full"
@@ -274,4 +284,5 @@ export default function VideoTutorials() {
             )}
         </div>
     );
+
 }

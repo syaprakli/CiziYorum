@@ -35,7 +35,7 @@ export default function Sidebar({ isOpen, onClose }) {
             />
 
             <aside className={`fixed top-0 left-0 h-[100dvh] bg-white shadow-2xl rounded-r-3xl flex flex-col p-3 z-40 transition-transform duration-300 ease-out transform
-                w-60 lg:w-64 lg:static lg:translate-x-0
+                w-52 sm:w-60 lg:w-64 lg:static lg:translate-x-0
                 ${isOpen ? 'translate-x-0' : '-translate-x-full'}
             `}>
                 {/* Mobile Close Button */}
