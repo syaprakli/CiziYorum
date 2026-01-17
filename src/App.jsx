@@ -1,4 +1,5 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Gallery from './pages/Gallery';
@@ -12,7 +13,18 @@ import Settings from './pages/Settings';
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
   const activeTab = location.pathname.substring(1) || 'dashboard';
+
+  // Redirect to profile on first visit if no logo is set
+  useEffect(() => {
+    const hasLogo = localStorage.getItem('appLogo');
+    // If no logo is saved AND we are on the dashboard (root), redirect to profile
+    if (!hasLogo && (location.pathname === '/' || location.pathname === '/dashboard')) {
+      // We use replace: true so the user can't click back to the empty dashboard loop easily
+      navigate('/profile', { replace: true });
+    }
+  }, [location.pathname, navigate]);
 
   return (
     <Layout>
