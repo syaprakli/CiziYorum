@@ -351,14 +351,17 @@ export default function Settings() {
                     <div className="bg-blue-50 rounded-3xl p-8 border border-blue-100">
                         <h3 className="font-bold text-blue-900 text-lg mb-2">💡 Neden API Anahtarı?</h3>
                         <p className="text-blue-700/80 leading-relaxed mb-4">
-                            Uygulamanın akıllı özelliklerini (resim yorumlama, fikir üretme) kullanabilmek için seçtiğiniz modelin servisine bağlanmamız gerekir.
+                            Uygulamanın akıllı özelliklerini (resim yorumlama, fikir üretme) kullanabilmek için Google'dan ücretsiz bir anahtar almalısın.
                         </p>
-                        <ul className="space-y-2 text-sm font-medium text-blue-800">
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-                                Gemini için Google AI Studio'dan anahtar alabilirsiniz.
-                            </li>
-                        </ul>
+                        <a
+                            href="https://aistudio.google.com/app/apikey"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full bg-blue-500 text-white font-bold py-3 rounded-xl hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200"
+                        >
+                            <Key size={18} />
+                            Ücretsiz Anahtar Al (Google)
+                        </a>
                     </div>
 
                     <div className="bg-purple-50 rounded-3xl p-8 border border-purple-100 opacity-60 pointer-events-none grayscale">

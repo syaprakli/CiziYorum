@@ -168,14 +168,23 @@ export default function Upload() {
 
                             {/* Send Button Overlay - Only if NO feedback */}
                             {!feedback && (
-                                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent pt-20 flex justify-center">
+                                <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent pt-24 flex flex-col md:flex-row items-center justify-center gap-4">
                                     <button
                                         onClick={handleAnalyze}
                                         disabled={loading}
-                                        className="bg-secondary text-white font-bold py-4 px-12 text-xl rounded-2xl shadow-pop hover:scale-105 transition-transform flex items-center disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed"
+                                        className="bg-secondary text-white font-bold py-3 px-8 text-lg rounded-xl shadow-pop hover:scale-105 transition-transform flex items-center disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed w-full md:w-auto justify-center"
                                     >
-                                        {loading ? <Loader2 className="animate-spin mr-3" size={28} /> : <Send className="mr-3" size={28} />}
+                                        {loading ? <Loader2 className="animate-spin mr-2" size={24} /> : <Send className="mr-2" size={24} />}
                                         {loading ? 'İnceleniyor...' : 'Öğretmene Gönder'}
+                                    </button>
+
+                                    <button
+                                        onClick={handleSaveToGallery}
+                                        disabled={loading || saved}
+                                        className="bg-white/20 backdrop-blur-md text-white border-2 border-white/50 font-bold py-3 px-6 text-lg rounded-xl hover:bg-white/30 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto justify-center"
+                                    >
+                                        {saved ? <CheckCircle className="mr-2" size={24} /> : <Save className="mr-2" size={24} />}
+                                        {saved ? 'Kaydedildi' : 'Sadece Kaydet'}
                                     </button>
                                 </div>
                             )}
