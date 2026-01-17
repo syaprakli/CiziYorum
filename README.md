@@ -1,16 +1,35 @@
-# React + Vite
+# AsafDraw - Çocuklar İçin Çizim ve Video Atölyesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AsafDraw, çocukların çizim yeteneklerini geliştirmeleri için tasarlanmış eğlenceli ve öğretici bir web uygulamasıdır. İçerisinde adım adım çizim dersleri, video eğitimleri ve oyunlaştırılmış bir gelişim sistemi barındırır.
 
-Currently, two official plugins are available:
+## 📥 İndirme Linki
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Projenin kaynak kodlarını ve tüm dosyalarını (videolar dahil) aşağıdaki linkten indirebilirsiniz:
 
-## React Compiler
+[**👉 Projeyi İndir (ZIP)**](https://github.com/syaprakli/CiziYorum/archive/refs/heads/master.zip)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Özellikler
 
-## Expanding the ESLint configuration
+- **Video Atölyesi:** Klasik ve dijital çizim için kategorize edilmiş eğitim videoları.
+- **Adım Adım Çizim:** Çocuklar için basitleştirilmiş görsel çizim rehberleri.
+- **Profil ve Seviye Sistemi:** Kullanıcıların gelişimini takip eden puan ve seviye sistemi.
+- **Galeri:** Çizimlerin yüklenebileceği ve sergilenebileceği alan.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Kurulum ve Çalıştırma
+
+Bu projeyi bilgisayarınızda çalıştırmak için:
+
+1.  Proje dosyalarını indirin ve klasöre çıkartın.
+2.  Terminali açın ve proje klasörüne gidin.
+3.  Gerekli paketleri yükleyin:
+    ```bash
+    npm install
+    ```
+4.  Uygulamayı başlatın:
+    ```bash
+    npm run dev
+    ```
+
+## 📝 Lisans
+
+Bu proje eğitim amaçlı hazırlanmıştır.
