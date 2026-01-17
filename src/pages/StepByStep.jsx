@@ -189,16 +189,19 @@ export default function StepByStep() {
                         </div>
 
                         {/* Instruction Panel - Bottom Fixed */}
-                        <div className="w-full bg-white border-t shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-10 flex flex-col md:flex-row md:items-center md:justify-between p-4 gap-4">
+                        <div className="w-full bg-white border-t shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-10 flex flex-col md:flex-row md:items-center md:justify-between p-8 gap-6">
 
-                            <div className="flex items-center gap-4 flex-1">
-                                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black text-xl shadow-sm flex-shrink-0">
+                            <div className="flex items-center gap-6 flex-1">
+                                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black text-2xl shadow-sm flex-shrink-0">
                                     {currentStep + 1}
                                 </div>
                                 <div>
-                                    <h3 className="text-lg md:text-xl font-bold text-gray-800 leading-tight">
+                                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight">
                                         {activeTutorial.steps[currentStep].text}
                                     </h3>
+                                    <p className="text-gray-400 font-medium text-base hidden md:block mt-2">
+                                        Acele etme, çizgilerin üzerinden sakince geç. ✏️
+                                    </p>
                                 </div>
                             </div>
 
