@@ -181,36 +181,36 @@ export default function Upload() {
                             )}
                         </div>
 
-                        {/* Feedback Card - Now Below Image */}
+                        {/* Feedback Card - Compact */}
                         {feedback && (
-                            <div className="w-full bg-white rounded-3xl p-8 shadow-soft border-l-8 border-secondary animate-in slide-in-from-bottom transition-all duration-500">
-                                <h3 className="font-bold text-primary mb-4 flex items-center text-3xl">
-                                    <span className="text-5xl mr-4">👩‍🎨</span> Öğretmenin Diyor ki:
+                            <div className="w-full bg-white rounded-3xl p-6 shadow-soft border-l-8 border-secondary animate-in slide-in-from-bottom transition-all duration-500">
+                                <h3 className="font-bold text-primary mb-3 flex items-center text-2xl">
+                                    <span className="text-3xl mr-3">👩‍🎨</span> Öğretmenin Diyor ki:
                                 </h3>
 
-                                <div className="bg-light/50 p-8 rounded-2xl mb-8 max-h-[500px] overflow-y-auto custom-scrollbar border-2 border-primary/5">
-                                    <p className="text-2xl text-dark leading-relaxed font-medium">
+                                <div className="bg-light/50 p-6 rounded-2xl mb-6 max-h-[300px] overflow-y-auto custom-scrollbar border-2 border-primary/5">
+                                    <p className="text-lg text-dark leading-relaxed font-medium">
                                         {feedback}
                                     </p>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {!saved ? (
                                         <button
                                             onClick={handleSaveToGallery}
-                                            className="w-full bg-primary text-white py-6 rounded-2xl font-bold hover:bg-primary/90 transition-colors flex items-center justify-center gap-3 text-xl shadow-lg hover:-translate-y-1"
+                                            className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 text-lg shadow-lg hover:-translate-y-1"
                                         >
-                                            <Save size={28} />
+                                            <Save size={24} />
                                             Galeriye Kaydet
                                         </button>
                                     ) : (
-                                        <button disabled className="w-full bg-green-100 text-green-600 py-6 rounded-2xl font-bold flex items-center justify-center gap-3 text-xl">
-                                            <CheckCircle size={28} />
+                                        <button disabled className="w-full bg-green-100 text-green-600 py-4 rounded-xl font-bold flex items-center justify-center gap-2 text-lg">
+                                            <CheckCircle size={24} />
                                             Kaydedildi!
                                         </button>
                                     )}
 
-                                    <button onClick={clearSelection} className="w-full bg-gray-100 text-gray-500 py-6 rounded-2xl font-bold hover:bg-gray-200 transition-colors text-xl">
+                                    <button onClick={clearSelection} className="w-full bg-gray-100 text-gray-500 py-4 rounded-xl font-bold hover:bg-gray-200 transition-colors text-lg">
                                         Yeni Resim Çiz
                                     </button>
                                 </div>
