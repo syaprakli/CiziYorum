@@ -49,7 +49,7 @@ export default function StepByStep() {
         // Clean double slashes if base url ends with / and path starts with /
         const base = import.meta.env.BASE_URL;
         const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-        return `${base}${cleanPath}`;
+        return encodeURI(`${base}${cleanPath}`);
     };
 
     return (
