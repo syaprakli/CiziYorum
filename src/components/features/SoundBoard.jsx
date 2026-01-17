@@ -35,13 +35,13 @@ export default function SoundBoard() {
     }, [volume]);
 
     return (
-        <div className="bg-light/50 p-4 rounded-2xl backdrop-blur-sm">
-            <h4 className="flex items-center text-sm font-bold text-gray-600 mb-3">
-                <Volume2 size={16} className="mr-2" />
+        <div className="bg-light/50 p-3 rounded-2xl backdrop-blur-sm">
+            <h4 className="flex items-center text-xs font-bold text-gray-500 mb-2">
+                <Volume2 size={14} className="mr-2" />
                 Odaklanma Sesi
             </h4>
 
-            <div className="flex justify-between mb-4 gap-2">
+            <div className="flex justify-between mb-2 gap-1.5">
                 {Object.entries(SOUNDS).map(([key, data]) => {
                     const isActive = activeSound === key;
                     return (
@@ -49,7 +49,7 @@ export default function SoundBoard() {
                             key={key}
                             onClick={() => setActiveSound(isActive ? null : key)}
                             title={data.label}
-                            className={`w-12 h-12 flex items-center justify-center rounded-2xl transition-all text-2xl
+                            className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all text-lg
                         ${isActive
                                     ? 'bg-white shadow-pop scale-110 border-2 border-secondary'
                                     : 'bg-white/50 hover:bg-white hover:scale-105'

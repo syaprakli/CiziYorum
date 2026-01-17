@@ -4,12 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GAME_TYPES } from '../data/prompts';
 import { getGallery, saveGallery } from '../utils/storage';
 
-const MOCK_DRAWINGS = [
-    { id: 1, image: '/img/cat_step3.png', task: 'Kedi Çizimi', category: 'simple', date: '15 Ocak 2026' },
-    { id: 2, image: '/img/roket_step3.svg', task: 'Uzaya Giden Roket', category: 'scamper', date: '14 Ocak 2026' },
-    { id: 3, image: '/img/balik_step3.svg', task: 'Renkli Balık', category: 'jar', date: '12 Ocak 2026' },
-    { id: 4, image: '/img/cat_step3.png', task: 'Kedi Çizimi', category: 'simple', date: '10 Ocak 2026' },
-];
+
 
 
 
@@ -37,17 +32,10 @@ export default function Gallery() {
                 if (savedDrawings && savedDrawings.length > 0) {
                     setDrawings(savedDrawings);
                 } else {
-                    // Start empty or with mock, prefer empty for production but mock for demo
-                    // Based on previous logic, it loaded Mock if empty.
-                    // But standard app usually starts empty. Given logic:
+                    setDrawings([]);
+                    // Mark first run as done so we don't wonder about it later
                     if (!localStorage.getItem('firstRun')) {
-                        // First run optional mock? Keep it clean for now or keep mock logic
-                        // The user has existing flow. I'll respect the "MOCK if empty" logic but via async
-                        setDrawings(MOCK_DRAWINGS);
-                        await saveGallery(MOCK_DRAWINGS);
                         localStorage.setItem('firstRun', 'true');
-                    } else {
-                        setDrawings([]);
                     }
                 }
             } catch (error) {
