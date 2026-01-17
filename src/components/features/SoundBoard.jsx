@@ -73,10 +73,14 @@ export default function SoundBoard() {
                     type="range"
                     min="0"
                     max="1"
-                    step="0.1"
+                    step="0.01"
                     value={volume}
-                    onChange={(e) => setVolume(parseFloat(e.target.value))}
-                    className="w-full h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-primary"
+                    onChange={(e) => {
+                        const newVol = parseFloat(e.target.value);
+                        setVolume(newVol);
+                        audioRef.current.volume = newVol; // Force update immediately
+                    }}
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-600 active:accent-blue-700 touch-manipulation"
                 />
                 <Volume2 size={14} className="text-gray-400" />
             </div>
