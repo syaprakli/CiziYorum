@@ -170,9 +170,9 @@ export default function StepByStep() {
                     </div>
 
                     {/* Main Content Area */}
-                    <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+                    <div className="flex-1 flex flex-col overflow-hidden">
                         {/* Image - Center Stage */}
-                        <div className="flex-1 bg-gray-50 relative flex items-center justify-center p-8 overflow-auto">
+                        <div className="flex-1 bg-gray-50 relative flex items-center justify-center p-4 overflow-hidden">
                             {/* Grid Pattern Background */}
                             <div className="absolute inset-0 opacity-[0.05]"
                                 style={{
@@ -188,42 +188,42 @@ export default function StepByStep() {
                             />
                         </div>
 
-                        {/* Instruction Panel */}
-                        <div className="w-full md:w-96 bg-white border-l shadow-xl z-10 flex flex-col">
-                            <div className="flex-1 p-8 flex flex-col justify-center">
-                                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black text-2xl mb-6 shadow-sm">
+                        {/* Instruction Panel - Bottom Fixed */}
+                        <div className="w-full bg-white border-t shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-10 flex flex-col md:flex-row md:items-center md:justify-between p-4 gap-4">
+
+                            <div className="flex items-center gap-4 flex-1">
+                                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-black text-xl shadow-sm flex-shrink-0">
                                     {currentStep + 1}
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-800 mb-4 leading-snug">
-                                    {activeTutorial.steps[currentStep].text}
-                                </h3>
-                                <p className="text-gray-400 font-medium">
-                                    Bu adımı kağıdına dikkatlice çiz. Acele etme!
-                                </p>
+                                <div>
+                                    <h3 className="text-lg md:text-xl font-bold text-gray-800 leading-tight">
+                                        {activeTutorial.steps[currentStep].text}
+                                    </h3>
+                                </div>
                             </div>
 
                             {/* Navigation Buttons */}
-                            <div className="p-6 border-t bg-gray-50 flex gap-4">
+                            <div className="flex gap-3 w-full md:w-auto">
                                 <button
                                     onClick={handlePrev}
                                     disabled={currentStep === 0}
-                                    className={`flex-1 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all
+                                    className={`px-4 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all flex-1 md:flex-none
                                     ${currentStep === 0
-                                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                            : 'bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-100'}`}
+                                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                            : 'bg-white border-2 border-gray-200 text-gray-700 hover:bg-gray-50'}`}
                                 >
-                                    <ArrowLeft size={20} />
+                                    <ArrowLeft size={18} />
                                     Geri
                                 </button>
                                 <button
                                     onClick={handleNext}
-                                    className={`flex-[2] py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all text-white shadow-lg
+                                    className={`px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all text-white shadow-lg flex-[2] md:flex-none
                                     ${currentStep === activeTutorial.steps.length - 1
                                             ? 'bg-green-500 shadow-green-200 hover:bg-green-600'
                                             : 'bg-blue-500 shadow-blue-200 hover:bg-blue-600'}`}
                                 >
-                                    {currentStep === activeTutorial.steps.length - 1 ? 'Bitirdim! 🎉' : 'Sıradaki Adım'}
-                                    {currentStep !== activeTutorial.steps.length - 1 && <ArrowRight size={20} />}
+                                    {currentStep === activeTutorial.steps.length - 1 ? 'Bitir! 🎉' : 'İleri'}
+                                    {currentStep !== activeTutorial.steps.length - 1 && <ArrowRight size={18} />}
                                 </button>
                             </div>
                         </div>
