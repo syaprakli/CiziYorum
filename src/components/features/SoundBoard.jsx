@@ -20,9 +20,15 @@ export default function SoundBoard() {
         };
     }, []);
 
+    const getAssetPath = (path) => {
+        const base = import.meta.env.BASE_URL;
+        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+        return `${base}${cleanPath}`;
+    };
+
     useEffect(() => {
         if (activeSound) {
-            audioRef.current.src = SOUNDS[activeSound].path;
+            audioRef.current.src = getAssetPath(SOUNDS[activeSound].path);
             audioRef.current.volume = volume;
             audioRef.current.play().catch(e => console.error("Audio play failed", e));
         } else {
