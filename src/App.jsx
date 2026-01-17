@@ -16,13 +16,13 @@ function App() {
   const navigate = useNavigate();
   const activeTab = location.pathname.substring(1) || 'dashboard';
 
-  // Redirect to profile on first visit if no logo is set
+  // Redirect to settings on first visit if no logo is set
   useEffect(() => {
     const hasLogo = localStorage.getItem('appLogo');
-    // If no logo is saved AND we are on the dashboard (root), redirect to profile
+    // If no logo is saved AND we are on the dashboard (root), redirect to settings
     if (!hasLogo && (location.pathname === '/' || location.pathname === '/dashboard')) {
       // We use replace: true so the user can't click back to the empty dashboard loop easily
-      navigate('/profile', { replace: true });
+      navigate('/settings', { replace: true });
     }
   }, [location.pathname, navigate]);
 
