@@ -1,0 +1,8 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Adım 1: Daire</title>
+  <rect fill="#ffffff" id="canvas_background" height="302" width="402" y="-1" x="-1"/>
+  <ellipse stroke="#000" ry="100" rx="100" id="svg_1" cy="150" cx="200" stroke-width="5" fill="none"/>
+  <text x="50%" y="280" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#555">1. Büyük bir daire çiz</text>
+ </g>
+</svg>
