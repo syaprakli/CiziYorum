@@ -1,6 +1,6 @@
 # ÇiziYorum - Çocuklar İçin Çizim ve Video Atölyesi
 
-AsafDraw, çocukların çizim yeteneklerini geliştirmeleri için tasarlanmış eğlenceli ve öğretici bir web uygulamasıdır. İçerisinde adım adım çizim dersleri, video eğitimleri ve oyunlaştırılmış bir gelişim sistemi barındırır.
+ÇiziYorum, çocukların çizim yeteneklerini geliştirmeleri için tasarlanmış eğlenceli ve öğretici bir web uygulamasıdır. İçerisinde adım adım çizim dersleri, video eğitimleri ve oyunlaştırılmış bir gelişim sistemi barındırır.
 
 ## 📥 İndirme Linki
 
