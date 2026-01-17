@@ -228,12 +228,12 @@ export default function Upload() {
                             ref={fileInputRef}
                         />
 
-                        <label htmlFor="file-upload" className="relative group w-full max-w-lg aspect-square bg-white border-8 border-dashed border-gray-200 rounded-[3rem] flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer shadow-soft hover:shadow-lg">
-                            <div className="w-40 h-40 bg-light rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform text-primary shadow-inner">
-                                <Camera size={80} />
+                        <label htmlFor="file-upload" className="relative group w-full max-w-sm aspect-[4/3] bg-white border-4 border-dashed border-gray-200 rounded-3xl flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer shadow-soft hover:shadow-lg">
+                            <div className="w-24 h-24 bg-light rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform text-primary shadow-inner">
+                                <Camera size={48} />
                             </div>
-                            <span className="font-bold text-gray-400 group-hover:text-primary text-3xl">Fotoğraf Çek</span>
-                            <span className="mt-2 text-lg text-gray-300 group-hover:text-primary/70 font-medium">veya yüklemek için tıkla</span>
+                            <span className="font-bold text-gray-400 group-hover:text-primary text-2xl">Fotoğraf Çek</span>
+                            <span className="mt-1 text-base text-gray-300 group-hover:text-primary/70 font-medium">veya yüklemek için tıkla</span>
                         </label>
                     </>
                 )}

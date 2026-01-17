@@ -79,7 +79,7 @@ export const analyzeDrawing = async (fileBase64, promptText = "Bu resmi yorumla"
         return "Hımm, bir cevap oluşturamadım. Tekrar dener misin?";
     } catch (error) {
         console.error("Gemini Fetch Error:", error);
-        return "Bağlantı hatası oluştu. Lütfen internetini ve anahtarını kontrol et.";
+        return `⚠️ Bağlantı hatası: ${error.message || error.toString()}. (Anahtar veya İnternet sorunu)`;
     }
 };
 
