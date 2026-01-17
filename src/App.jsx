@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import Layout from './components/layout/Layout';
+import WelcomeModal from './components/layout/WelcomeModal';
 import Dashboard from './pages/Dashboard';
 import Gallery from './pages/Gallery';
 import Upload from './pages/Upload';
@@ -13,21 +13,13 @@ import Settings from './pages/Settings';
 
 function App() {
   const location = useLocation();
-  const navigate = useNavigate();
   const activeTab = location.pathname.substring(1) || 'dashboard';
 
-  // Redirect to settings on first visit if no logo is set
-  useEffect(() => {
-    const hasLogo = localStorage.getItem('appLogo');
-    // If no logo is saved AND we are on the dashboard (root), redirect to settings
-    if (!hasLogo && (location.pathname === '/' || location.pathname === '/dashboard')) {
-      // We use replace: true so the user can't click back to the empty dashboard loop easily
-      navigate('/settings', { replace: true });
-    }
-  }, [location.pathname, navigate]);
+
 
   return (
     <Layout>
+      <WelcomeModal />
       <div className="max-w-6xl mx-auto">
 
         {/* Header / Welcome */}
