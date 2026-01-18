@@ -1,4 +1,4 @@
-import { Home, Lightbulb, Image, Upload, Settings, BookOpen, Smile, Play, X } from 'lucide-react';
+import { Home, Lightbulb, Image, Upload, Settings, BookOpen, Smile, Play, X, Sun } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import SidebarItem from './SidebarItem';
 import SoundBoard from '../features/SoundBoard';
@@ -22,6 +22,7 @@ export default function Sidebar({ isOpen, onClose }) {
         { id: 'dashboard', label: 'Fikirler', icon: Lightbulb },
         { id: 'adim-adim', label: 'Adım Adım Çiz', icon: BookOpen },
         { id: 'videolar', label: 'Eğitim Videoları', icon: Play },
+        { id: 'shading', label: 'Işık & Gölge', icon: Sun },
         { id: 'gallery', label: 'Galeri', icon: Image },
         { id: 'upload', label: 'Yükle & Kontrol', icon: Upload },
     ];

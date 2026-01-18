@@ -87,6 +87,15 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
         navigate('/upload', { state: { mission: prompt } });
     };
 
+    // Helper to resolve asset paths correctly on GitHub Pages
+    const getAssetPath = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http')) return path;
+        const base = import.meta.env.BASE_URL || '/';
+        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+        return `${base}${cleanPath}`;
+    };
+
     return (
         <AnimatePresence>
             <motion.div
@@ -124,7 +133,7 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
                                 {gameId === 'imageTask' && imageTask && (
                                     <div className="w-48 h-48 bg-gray-50 rounded-3xl p-4 flex items-center justify-center shadow-inner mb-2">
                                         <img
-                                            src={imageTask.img}
+                                            src={getAssetPath(imageTask.img)}
                                             alt={imageTask.label}
                                             className="max-w-full max-h-full object-contain"
                                         />
