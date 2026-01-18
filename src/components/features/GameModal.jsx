@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, RefreshCcw, ArrowRight, Sparkles } from 'lucide-react';
+import { X, RefreshCcw, ArrowRight, Sparkles, ZoomIn } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ADJECTIVES, NOUNS, SCAMPER_QUESTIONS, HARD_TASKS, SHAPE_PROMPTS, DRAW_FROM_IMAGE_TASKS } from '../../data/prompts';
@@ -9,6 +9,7 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
     const [prompt, setPrompt] = useState(taskContent || 'Düşünülüyor...');
     const [imageTask, setImageTask] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [isZoomed, setIsZoomed] = useState(false);
     const navigate = useNavigate();
 
     const generatePrompt = async () => {
@@ -67,7 +68,7 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
             case 'imageTask':
                 const task = r(DRAW_FROM_IMAGE_TASKS);
                 setImageTask(task);
-                newPrompt = `Bakalım bunu çizebilir misin: ${task.label}`;
+                newPrompt = `Bakalım bunu çizebilir misin?`;
                 break;
             default:
                 newPrompt = "Sürpriz bir şeyler çiz!";
@@ -131,12 +132,18 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
                         ) : (
                             <div className="flex flex-col items-center gap-6">
                                 {gameId === 'imageTask' && imageTask && (
-                                    <div className="w-48 h-48 bg-gray-50 rounded-3xl p-4 flex items-center justify-center shadow-inner mb-2">
+                                    <div
+                                        className="w-48 h-48 bg-gray-50 rounded-3xl p-4 flex items-center justify-center shadow-inner mb-2 cursor-zoom-in group relative"
+                                        onClick={() => setIsZoomed(true)}
+                                    >
                                         <img
                                             src={getAssetPath(imageTask.img)}
                                             alt={imageTask.label}
-                                            className="max-w-full max-h-full object-contain"
+                                            className="max-w-full max-h-full object-contain transition-transform group-hover:scale-105"
                                         />
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 flex items-center justify-center rounded-3xl transition-colors">
+                                            <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity" size={32} />
+                                        </div>
                                     </div>
                                 )}
                                 <p className="text-2xl font-bold text-dark leading-relaxed whitespace-pre-line">
@@ -147,7 +154,7 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
                     </div>
 
                     {/* Footer Controls */}
-                    <div className="p-6 bg-gray-50 flex justify-center gap-4">
+                    <div className="p-6 bg-gray-50 flex justify-center gap-4 flex-wrap">
                         {!taskContent && (
                             <button
                                 onClick={generatePrompt}
@@ -155,6 +162,16 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
                             >
                                 <RefreshCcw size={20} />
                                 Başka Ver
+                            </button>
+                        )}
+
+                        {gameId === 'imageTask' && imageTask && (
+                            <button
+                                onClick={() => setIsZoomed(true)}
+                                className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-blue-500 hover:text-blue-500 transition-colors shadow-sm"
+                            >
+                                <ZoomIn size={20} />
+                                Büyüt
                             </button>
                         )}
 
@@ -169,6 +186,29 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
 
                 </motion.div>
             </motion.div>
+
+            {/* Zoom Modal */}
+            {isZoomed && imageTask && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-dark/95 backdrop-blur-md p-4 animate-in fade-in duration-300"
+                    onClick={() => setIsZoomed(false)}
+                >
+                    <button
+                        className="absolute top-6 right-6 text-white hover:text-gray-300 bg-white/10 p-3 rounded-full transition-colors"
+                        onClick={() => setIsZoomed(false)}
+                    >
+                        <X size={32} />
+                    </button>
+                    <motion.img
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        src={getAssetPath(imageTask.img)}
+                        alt={imageTask.label}
+                        className="max-w-full max-h-screen object-contain shadow-2xl rounded-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
         </AnimatePresence>
     );
 }

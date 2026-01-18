@@ -263,6 +263,76 @@ export const STEP_TUTORIALS = [
             { text: "Detayları tamamla.", img: "stepbystep/quakka/Quokka-09_quokka-drawing-tutorial.webp" },
             { text: "Harika! Quokka'n çok mutlu görünüyor.", img: "stepbystep/quakka/Quokka-11_quokka-drawing-tutorial.webp" }
         ]
+    },
+    {
+        id: 'charmander',
+        title: "Charmander",
+        desc: "Pokemon dünyasının ateşli ve sevimli dostu!",
+        thumbnail: "stepbystep/Charmender/how-to-draw-charmander-from-pokemon-featured-image-1200.webp",
+        steps: [
+            { text: "Kafası ve vücudu için temel hatları çiz.", img: "stepbystep/Charmender/Charmander-01.webp" },
+            { text: "Gözlerini ve yüz detaylarını ekle.", img: "stepbystep/Charmender/Charmander-02.webp" },
+            { text: "Kollarını ve gövdesini şekillendir.", img: "stepbystep/Charmender/Charmander-03.webp" },
+            { text: "Bacaklarını ve ayaklarını çiz.", img: "stepbystep/Charmender/Charmander-04.webp" },
+            { text: "Kuyruğunun temel şeklini oluştur.", img: "stepbystep/Charmender/Charmander-05.webp" },
+            { text: "Kuyruğunun ucundaki ateşi ekle! 🔥", img: "stepbystep/Charmender/Charmander-06.webp" },
+            { text: "Vücut hatlarını belirginleştir.", img: "stepbystep/Charmender/Charmander-07.webp" },
+            { text: "Pençeleri ve detayları ekle.", img: "stepbystep/Charmender/Charmander-08.webp" },
+            { text: "Çizimi son dokunuşlarla tamamla.", img: "stepbystep/Charmender/Charmander-09.webp" },
+            { text: "Muhteşem bir Charmander! Şimdi boyayabilirsin.", img: "stepbystep/Charmender/Charmander-10.webp" }
+        ]
+    },
+    {
+        id: 'gengar',
+        title: "Gengar",
+        desc: "Pokemon dünyasının gizemli ve yaramaz hayaleti!",
+        thumbnail: "stepbystep/Gengar/how-to-draw-gengar-from-pokemon-featured-image-1200.webp",
+        steps: [
+            { text: "Gengar'ın yuvarlak vücut hattıyla başla.", img: "stepbystep/Gengar/Geengar-01.webp" },
+            { text: "Sırtındaki dikenli çıkıntıları ekle.", img: "stepbystep/Gengar/Geengar-02.png" },
+            { text: "Geniş ve yaramaz gülüşünü çiz.", img: "stepbystep/Gengar/Geengar-03.webp" },
+            { text: "Kollarını ve ellerini oluştur.", img: "stepbystep/Gengar/Geengar-05.webp" },
+            { text: "Gözlerini ve şeytani bakışını ekle.", img: "stepbystep/Gengar/Geengar-06.webp" },
+            { text: "Bacaklarını ve ayaklarını çiz.", img: "stepbystep/Gengar/Geengar-07.webp" },
+            { text: "Vücut hatlarını netleştir.", img: "stepbystep/Gengar/Geengar-08.webp" },
+            { text: "Karakterin son detaylarını ekle.", img: "stepbystep/Gengar/Geengar-09.webp" },
+            { text: "Harika! Gengar hazır, şimdi boyama zamanı.", img: "stepbystep/Gengar/Geengar-11.webp" }
+        ]
+    },
+    {
+        id: 'pikachu-chibi',
+        title: "Pikachu (Chibi)",
+        desc: "Dünyanın en tatlı ve küçük Pikachu'su!",
+        thumbnail: "stepbystep/Pikachu/how-to-draw-a-cute-chibi-pikachu-pokemon-featured-image-1200.webp",
+        steps: [
+            { text: "Yuvarlak kafa ve vücutla başla.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-01.webp" },
+            { text: "Kulaklarını ekle ve uçlarını boya.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-02.webp" },
+            { text: "Büyük ve sevimli gözlerini çiz.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-03.webp" },
+            { text: "Yanaklarını ve küçük ağzını ekle.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-04.webp" },
+            { text: "Küçük kollarını yana ekle.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-05.webp" },
+            { text: "Ayaklarını ve gövdesini birleştir.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-06.webp" },
+            { text: "Şimşek şeklindeki kuyruğunu ekle.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-07.webp" },
+            { text: "Sırtındaki çizgileri ve detayları yap.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-08.webp" },
+            { text: "Hattı belirginleştir ve temizle.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-09.webp" },
+            { text: "Tebrikler! Bu tatlı Pikachu'yu boya.", img: "stepbystep/Pikachu/Cute-Chibi-Pikachu-Pokemon-step-by-step-drawing-tutorial-step-10.webp" }
+        ]
+    },
+    {
+        id: 'pikachu-classic',
+        title: "Pikachu",
+        desc: "Orijinal ve enerjik Pokemon ustası!",
+        thumbnail: "stepbystep/Pikachu 2/how-to-draw-pikachu-featured-image-1200.webp",
+        steps: [
+            { text: "Kafası ve kulak hatlarıyla başla.", img: "stepbystep/Pikachu 2/Step-1_pikachu-drawing-tutorial.webp" },
+            { text: "Gövde ve kol yerlerini belirle.", img: "stepbystep/Pikachu 2/Step-2_pikachu-drawing-tutorial.webp" },
+            { text: "Kulak uçlarını ve yanaklarını ekle.", img: "stepbystep/Pikachu 2/Step-3_pikachu-drawing-tutorial.webp" },
+            { text: "Kollarını ve küçük ellerini çiz.", img: "stepbystep/Pikachu 2/Step-4_pikachu-drawing-tutorial.webp" },
+            { text: "Ayaklarını ve gövde hatlarını yap.", img: "stepbystep/Pikachu 2/Step-5_pikachu-drawing-tutorial.webp" },
+            { text: "Meşhur kuyruğunu şimşek gibi ekle.", img: "stepbystep/Pikachu 2/Step-6_pikachu-drawing-tutorial.webp" },
+            { text: "Gözlerini ve neşeli ifadesini çiz.", img: "stepbystep/Pikachu 2/Step-7_pikachu-drawing-tutorial.webp" },
+            { text: "Tüm detayları belirginleştir.", img: "stepbystep/Pikachu 2/Step-8_pikachu-drawing-tutorial.webp" },
+            { text: "Pika Pika! Çizimin tamamlandı.", img: "stepbystep/Pikachu 2/Step-9_pikachu-drawing-tutorial.png" }
+        ]
     }
 ];
 

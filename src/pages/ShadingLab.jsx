@@ -67,122 +67,137 @@ export default function ShadingLab() {
     };
 
     // Calculate Shadow Style
-    const dx = center.x - lightPos.x;
-    const dy = center.y - lightPos.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
+    const dx = center.x ? center.x - lightPos.x : 0;
+    const dy = center.y ? center.y - lightPos.y : 0;
+    const distance = Math.sqrt(dx * dx + dy * dy) || 1;
 
     // Shadow offset should be proportional to light distance but capped
-    const shadowX = (dx / (distance || 1)) * Math.min(distance / 5, 20);
-    const shadowY = (dy / (distance || 1)) * Math.min(distance / 5, 20);
-    const shadowBlur = Math.min(distance / 10, 15);
-    const shadowOpacity = Math.max(0.3, 1 - distance / 1000);
+    const shadowX = (dx / distance) * Math.min(distance / 5, 25);
+    const shadowY = (dy / distance) * Math.min(distance / 5, 25);
+    const shadowBlur = Math.min(distance / 8, 20);
+    const shadowOpacity = Math.max(0.2, 0.8 - distance / 800);
 
     return (
-        <div className="flex flex-col h-full bg-slate-50 rounded-3xl overflow-hidden border-2 border-white shadow-inner relative select-none">
+        <div className="flex flex-col h-full bg-orange-50/30 rounded-3xl overflow-hidden border-4 border-white shadow-xl relative select-none">
             {/* Header Info */}
-            <div className="p-6 bg-white border-b border-gray-100 flex items-center justify-between z-10">
+            <div className="p-6 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between z-10 shadow-sm">
                 <div>
-                    <h1 className="text-2xl font-heading font-bold text-dark flex items-center gap-2">
-                        Işık ve Gölge Laboratuvarı <Sun className="text-yellow-500 animate-pulse" />
+                    <h1 className="text-2xl font-heading font-bold text-dark flex items-center gap-3">
+                        Gölge Laboratuvarı <Sun className="text-yellow-500 fill-yellow-200 animate-spin-slow" size={32} />
                     </h1>
-                    <p className="text-gray-500 text-sm">Güneşi hareket ettirerek gölgelerin nasıl değiştiğini keşfet!</p>
+                    <p className="text-gray-500 font-medium">Güneşi sürükleyerek gölgelerin dansını izle!</p>
                 </div>
-                <div className="bg-primary/10 text-primary px-4 py-2 rounded-2xl font-bold border-2 border-primary/20">
-                    Konum: <span className="text-primary-dark">{getShadingLabel()}</span>
-                </div>
+                <motion.div
+                    layout
+                    className="bg-primary text-white px-6 py-3 rounded-2xl font-bold shadow-pop border-2 border-white"
+                >
+                    Konum: {getShadingLabel()}
+                </motion.div>
             </div>
 
             {/* Interaction Area */}
             <div
                 ref={containerRef}
-                className="flex-1 relative cursor-crosshair overflow-hidden touch-none"
+                className="flex-1 relative cursor-none overflow-hidden touch-none bg-gradient-to-b from-blue-50 to-orange-50"
                 onMouseMove={handleMove}
                 onTouchMove={handleMove}
             >
-                {/* Visual Guides */}
-                <div className="absolute inset-0 pointer-events-none opacity-20">
-                    <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gray-400 border-dashed border" />
-                    <div className="absolute top-0 left-1/2 w-[1px] h-full bg-gray-400 border-dashed border" />
+                {/* Floor Grid */}
+                <div className="absolute bottom-0 w-full h-1/2 bg-gray-200/20" style={{ perspective: '500px' }}>
+                    <div className="w-full h-full border-t-2 border-gray-300/30 grid grid-cols-12 rotateX-45">
+                        {[...Array(12)].map((_, i) => <div key={i} className="border-r border-gray-300/20" />)}
+                    </div>
                 </div>
 
                 {/* The Sun (Light Source) */}
                 <motion.div
-                    animate={{ x: lightPos.x - 24, y: lightPos.y - 24 }}
-                    transition={{ type: 'spring', damping: 20, stiffness: 200 }}
-                    className="absolute z-30 pointer-events-none"
+                    animate={{ x: lightPos.x - 32, y: lightPos.y - 32 }}
+                    transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.5 }}
+                    className="absolute z-40"
                 >
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-60 rounded-full animate-pulse" />
-                        <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
-                            <Sun size={28} className="text-white" />
+                    <div className="relative group">
+                        <div className="absolute inset-0 bg-yellow-400 blur-2xl opacity-40 rounded-full animate-pulse group-hover:opacity-60 transition-opacity" />
+                        <div className="w-16 h-16 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/50">
+                            <Sun size={36} className="text-white drop-shadow-md" />
                         </div>
                     </div>
                 </motion.div>
 
-                {/* The Character (Teddy Bear Stylized) */}
+                {/* The Character & Shadow Container */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                    <div
-                        className="relative w-48 h-48 sm:w-64 sm:h-64 transition-all duration-75"
-                        style={{
-                            filter: `drop-shadow(${shadowX}px ${shadowY}px ${shadowBlur}px rgba(0,0,0,${shadowOpacity}))`
-                        }}
-                    >
-                        {/* Teddy Bear SVG Representation */}
-                        <svg viewBox="0 0 200 200" className="w-full h-full">
-                            {/* Ears */}
-                            <circle cx="60" cy="60" r="25" fill="#A1887F" />
-                            <circle cx="140" cy="60" r="25" fill="#A1887F" />
-                            <circle cx="60" cy="60" r="15" fill="#D7CCC8" />
-                            <circle cx="140" cy="60" r="15" fill="#D7CCC8" />
+                    <svg viewBox="0 0 400 400" className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] overflow-visible">
+                        <defs>
+                            {/* Robust Soft Shadow Filter */}
+                            <filter id="shadowFilter" x="-100%" y="-100%" width="300%" height="300%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation={shadowBlur / 1.5} />
+                                <feOffset dx={shadowX * 2} dy={shadowY * 2} />
+                                <feComponentTransfer>
+                                    <feFuncA type="linear" slope={shadowOpacity} />
+                                </feComponentTransfer>
+                                <feMerge>
+                                    <feMergeNode />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <g filter="url(#shadowFilter)">
+                            {/* Teddy Bear Body */}
+                            <circle cx="200" cy="220" r="80" fill="#8D6E63" stroke="#5D4037" strokeWidth="4" />
+
+                            {/* Feet */}
+                            <circle cx="140" cy="290" r="30" fill="#795548" stroke="#5D4037" strokeWidth="3" />
+                            <circle cx="260" cy="290" r="30" fill="#795548" stroke="#5D4037" strokeWidth="3" />
 
                             {/* Head */}
-                            <circle cx="100" cy="110" r="70" fill="#8D6E63" />
+                            <circle cx="200" cy="130" r="70" fill="#A1887F" stroke="#5D4037" strokeWidth="4" />
+
+                            {/* Ears */}
+                            <circle cx="140" cy="80" r="25" fill="#8D6E63" stroke="#5D4037" strokeWidth="3" />
+                            <circle cx="260" cy="80" r="25" fill="#8D6E63" stroke="#5D4037" strokeWidth="3" />
+                            <circle cx="140" cy="80" r="12" fill="#D7CCC8" />
+                            <circle cx="260" cy="80" r="12" fill="#D7CCC8" />
 
                             {/* Muzzle */}
-                            <circle cx="100" cy="130" r="30" fill="#D7CCC8" />
-
-                            {/* Nose */}
-                            <ellipse cx="100" cy="115" rx="10" ry="7" fill="#3E2723" />
+                            <circle cx="200" cy="155" r="30" fill="#F5F5F5" />
 
                             {/* Eyes */}
-                            <circle cx="75" cy="100" r="6" fill="#212121" />
-                            <circle cx="125" cy="100" r="6" fill="#212121" />
+                            <circle cx="175" cy="120" r="8" fill="#212121" />
+                            <circle cx="225" cy="120" r="8" fill="#212121" />
 
-                            {/* Body (partial) */}
-                            <path d="M 40,180 Q 100,220 160,180 L 160,200 L 40,200 Z" fill="#795548" />
+                            {/* Highlights */}
+                            <circle cx="172" cy="117" r="3" fill="white" />
+                            <circle cx="222" cy="117" r="3" fill="white" />
 
-                            {/* Inner Shading Overlay (Simulates local shading) */}
-                            <defs>
-                                <radialGradient id="innerShade" cx={lightPos.x / 3 + "%"} cy={lightPos.y / 3 + "%"}>
-                                    <stop offset="0%" stopColor="white" stopOpacity="0.2" />
-                                    <stop offset="100%" stopColor="black" stopOpacity="0.4" />
-                                </radialGradient>
-                            </defs>
-                            <circle cx="100" cy="110" r="70" fill="url(#innerShade)" style={{ mixBlendMode: 'overlay' }} />
-                        </svg>
-                    </div>
+                            {/* Nose */}
+                            <ellipse cx="200" cy="140" rx="12" ry="8" fill="#3E2723" />
+                        </g>
+                    </svg>
                 </div>
 
-                {/* Light Rays Interaction Feedback */}
+                {/* Light Connection Ray */}
                 <svg className="absolute inset-0 z-10 pointer-events-none w-full h-full opacity-10">
                     <line
                         x1={lightPos.x} y1={lightPos.y}
-                        x2={center.x} y2={center.y}
+                        x2={center.x || '50%'} y2={center.y || '50%'}
                         stroke="#F1C40F"
-                        strokeWidth="2"
-                        strokeDasharray="5,5"
+                        strokeWidth="4"
+                        strokeDasharray="10,10"
                     />
                 </svg>
             </div>
 
             {/* Educational Footer */}
-            <div className="p-6 bg-white border-t border-gray-100 flex items-center gap-4">
-                <div className="bg-orange-100 p-3 rounded-full text-orange-500">
-                    <Info size={24} />
+            <div className="p-6 bg-white/90 backdrop-blur-md border-t border-gray-100 flex items-center gap-6 z-10">
+                <div className="bg-orange-500 p-4 rounded-2xl text-white shadow-lg animate-bounce-slow">
+                    <Info size={28} />
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                    <strong>Unutma:</strong> Işık nereden gelirse, gölge tam **tersi** yöne düşer. Işık uzaklaştıkça gölge daha yumuşak ve belirsiz olur, yaklaştıkça ise keskinleşir!
-                </p>
+                <div className="flex-1">
+                    <h4 className="font-bold text-dark mb-1">Küçük Bir İpucu:</h4>
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed font-medium">
+                        Işık nereden gelirse, gölge tam **tersi** yöne düşer. Güneş yaklaştıkça gölgen kısalır ve netleşir!
+                    </p>
+                </div>
             </div>
         </div>
     );
