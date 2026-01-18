@@ -61,6 +61,11 @@ export default function Upload() {
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
+            // Updated limit to 50MB for IndexedDB storage
+            if (file.size > 50 * 1024 * 1024) {
+                alert("Dosya çok büyük (Maks 50MB)!");
+                return;
+            }
             setSelectedFile(file);
             setLoading(true); // Show loading during resize
             try {
@@ -159,8 +164,8 @@ export default function Upload() {
                 {preview ? (
                     <div className="flex flex-col items-center w-full max-w-4xl gap-8">
                         {/* Image Card */}
-                        <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300 bg-black/5">
-                            <img src={preview} className="w-full h-auto" alt="User Drawing" />
+                        <div className="relative w-full max-h-[60dvh] rounded-3xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300 bg-black/5 flex items-center justify-center">
+                            <img src={preview} className="max-w-full max-h-[60dvh] object-contain" alt="User Drawing" />
 
                             <button onClick={clearSelection} className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 backdrop-blur-md z-10 transition-colors">
                                 <X size={20} />

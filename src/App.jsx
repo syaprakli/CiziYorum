@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import WelcomeModal from './components/layout/WelcomeModal';
@@ -10,10 +11,16 @@ import StepByStep from './pages/StepByStep';
 import VideoTutorials from './pages/VideoTutorials';
 
 import Settings from './pages/Settings';
+import { migrateFromLocalStorage } from './utils/storage';
 
 function App() {
   const location = useLocation();
   const activeTab = location.pathname.substring(1) || 'dashboard';
+
+  useEffect(() => {
+    // Migrate existing users' data from localStorage to IndexedDB
+    migrateFromLocalStorage();
+  }, []);
 
   return (
     <Layout>

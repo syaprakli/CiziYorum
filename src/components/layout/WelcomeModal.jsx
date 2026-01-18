@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Upload, Save, User, Key, ArrowRight, BrainCircuit } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { saveProfileData, saveProfileImage, getProfileData, getProfileImage } from '../../utils/storage';
 
 export default function WelcomeModal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,38 +18,74 @@ export default function WelcomeModal() {
     const fileInputRef = useRef(null);
 
     useEffect(() => {
-        const hasSetup = localStorage.getItem('isProfileSetupComplete');
-        const hasLogo = localStorage.getItem('appLogo');
+        const checkSetup = async () => {
+            const profileData = await getProfileData();
+            const profileImage = await getProfileImage();
 
-        if (!hasSetup && !hasLogo) {
-            setIsOpen(true);
-        }
+            if (!profileData && !profileImage) {
+                setIsOpen(true);
+            }
+        };
+        checkSetup();
     }, []);
+
+    const compressImage = (base64) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = base64;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxDim = 400; // Profile pics don't need to be huge
+
+                if (width > height) {
+                    if (width > maxDim) {
+                        height *= maxDim / width;
+                        width = maxDim;
+                    }
+                } else {
+                    if (height > maxDim) {
+                        width *= maxDim / height;
+                        height = maxDim;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.8)); // 80% quality jpeg is very small
+            };
+        });
+    };
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            if (file.size > 5 * 1024 * 1024) {
-                alert("Resim çok büyük (Maks 5MB)!");
+            // Increased limit to 20MB for profile pics, total storage is now gigabytes
+            if (file.size > 20 * 1024 * 1024) {
+                alert("Resim çok büyük (Maks 20MB)!");
                 return;
             }
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setPhoto(reader.result);
-                setPreview(reader.result);
+            reader.onloadend = async () => {
+                const compressed = await compressImage(reader.result);
+                setPhoto(compressed);
+                setPreview(compressed);
             };
             reader.readAsDataURL(file);
         }
     };
 
-    const handleSaveProfile = () => {
+    const handleSaveProfile = async () => {
         if (!name.trim()) {
             alert("Lütfen bir isim gir!");
             return;
         }
 
         try {
-            // Save Profile Data
+            // Save Profile Data to IndexedDB (virtually unlimited)
             const profileData = {
                 name: name,
                 about: about || 'Merhaba! Ben resim çizmeyi çok seviyorum.',
@@ -57,26 +94,22 @@ export default function WelcomeModal() {
                 favAnimal: favAnimal || 'Kedi'
             };
 
-            localStorage.setItem('userProfileData', JSON.stringify(profileData));
+            await saveProfileData(profileData);
 
             if (photo) {
-                try {
-                    localStorage.setItem('appLogo', photo);
-                    localStorage.setItem('userProfileImage', photo);
-                } catch (e) {
-                    console.warn("Fotoğraf kaydedilemedi (Kota dolmuş olabilir):", e);
-                    // Continue anyway, it's not fatal
-                }
+                await saveProfileImage(photo);
             }
 
+            // Mark setup as complete in localStorage as a simple flag (legacy check)
             localStorage.setItem('isProfileSetupComplete', 'true');
             window.dispatchEvent(new Event('logoChange'));
         } catch (error) {
             console.error("Profil kaydedilirken hata oluştu:", error);
-            // Even if global save fails, we try to move to step 2 so user isn't stuck
+            alert("⚠️ Kayıt işlemi sırasında bir sorun oluştu, lütfen tekrar dene.");
+            return; // Don't move to step 2 if critical failure
         }
 
-        // Move to AI Info step - ensuring this happens
+        // Move to AI Info step
         setStep(2);
     };
 
@@ -94,7 +127,7 @@ export default function WelcomeModal() {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300 text-dark">
             <div className="bg-white rounded-3xl p-5 w-full max-w-lg shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
 
                 {step === 1 ? (
@@ -113,7 +146,7 @@ export default function WelcomeModal() {
                             <div className="flex flex-col items-center">
                                 <div
                                     onClick={() => fileInputRef.current?.click()}
-                                    className="relative w-20 h-20 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-gray-50 transition-all group overflow-hidden"
+                                    className="relative w-24 h-24 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-gray-50 transition-all group overflow-hidden"
                                 >
                                     {preview && preview !== '/img/logo_new.jpg' ? (
                                         <img src={preview} alt="Preview" className="w-full h-full object-cover" />

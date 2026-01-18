@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import { getProfileImage } from '../../utils/storage';
 
 export default function Logo() {
     const [logo, setLogo] = useState('/img/logo_new.jpg');
 
     useEffect(() => {
-        const updateLogo = () => {
+        const updateLogo = async () => {
             try {
-                const savedLogo = localStorage.getItem('appLogo');
+                const savedLogo = await getProfileImage();
                 if (savedLogo) {
                     setLogo(savedLogo);
                 } else {
@@ -96,9 +97,9 @@ export function BrandLogo() {
     const [logo, setLogo] = useState('/img/logo_new.jpg');
 
     useEffect(() => {
-        const updateLogo = () => {
+        const updateLogo = async () => {
             try {
-                const savedLogo = localStorage.getItem('appLogo');
+                const savedLogo = await getProfileImage();
                 if (savedLogo) {
                     setLogo(savedLogo);
                 } else {
@@ -121,9 +122,9 @@ export function BrandLogo() {
     }, []);
 
     return (
-        <div className="relative w-32 h-32 flex items-center justify-center">
+        <div className="relative w-24 h-24 flex items-center justify-center">
             {/* Central Image */}
-            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
+            <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
                 <img
                     src={logo}
                     className="w-full h-full object-cover"
@@ -138,18 +139,18 @@ export function BrandLogo() {
             <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 200 200">
                 <defs>
                     {/* Top Arch */}
-                    <path id="top-curve" d="M 30,100 A 70,70 0 0,1 170,100" fill="none" />
-                    {/* Bottom Arch - drawn counter-clockwise to flip text correctly? No, usually distinct path needed for bottom readable text */}
-                    <path id="bottom-curve" d="M 30,100 A 70,70 0 0,0 170,100" fill="none" />
+                    <path id="top-curve" d="M 40,100 A 60,60 0 0,1 160,100" fill="none" />
+                    {/* Bottom Arch */}
+                    <path id="bottom-curve" d="M 40,100 A 60,60 0 0,0 160,100" fill="none" />
                 </defs>
 
-                <text fill="#6C5CE7" fontSize="24" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#6C5CE7" fontSize="28" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#top-curve" startOffset="50%" textAnchor="middle">
                         Haydi
                     </textPath>
                 </text>
 
-                <text fill="#00CEC9" fontSize="24" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#00CEC9" fontSize="28" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#bottom-curve" startOffset="50%" textAnchor="middle" dominantBaseline="hanging">
                         ÇiziYorum
                     </textPath>
