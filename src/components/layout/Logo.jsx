@@ -122,9 +122,9 @@ export function BrandLogo() {
     }, []);
 
     return (
-        <div className="relative w-24 h-24 flex items-center justify-center">
+        <div className="relative w-36 h-36 flex items-center justify-center">
             {/* Central Image */}
-            <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-pop z-10 relative bg-white">
                 <img
                     src={logo}
                     className="w-full h-full object-cover"
@@ -138,19 +138,19 @@ export function BrandLogo() {
             {/* Curved Text Container */}
             <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 200 200">
                 <defs>
-                    {/* Top Arch */}
-                    <path id="top-curve" d="M 40,100 A 60,60 0 0,1 160,100" fill="none" />
-                    {/* Bottom Arch */}
-                    <path id="bottom-curve" d="M 40,100 A 60,60 0 0,0 160,100" fill="none" />
+                    {/* Top Arch - radius 85 to clear the inner circle perfectly */}
+                    <path id="top-curve" d="M 15,100 A 85,85 0 0,1 185,100" fill="none" />
+                    {/* Bottom Arch - radius 85 */}
+                    <path id="bottom-curve" d="M 15,100 A 85,85 0 0,0 185,100" fill="none" />
                 </defs>
 
-                <text fill="#6C5CE7" fontSize="28" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#6C5CE7" fontSize="26" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#top-curve" startOffset="50%" textAnchor="middle">
                         Haydi
                     </textPath>
                 </text>
 
-                <text fill="#00CEC9" fontSize="28" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#00CEC9" fontSize="26" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#bottom-curve" startOffset="50%" textAnchor="middle" dominantBaseline="hanging">
                         ÇiziYorum
                     </textPath>
