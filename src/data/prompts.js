@@ -211,12 +211,67 @@ export const SHAPE_PROMPTS = [
 ];
 
 export const DRAW_FROM_IMAGE_TASKS = [
-    { id: 'cat', label: 'Sevimli Kedi', img: '/img/cat_step3.svg' },
-    { id: 'fish', label: 'Renkli Balık', img: '/img/balik_step3.svg' },
-    { id: 'flower', label: 'Güzel Çiçek', img: '/img/cicek_step3.svg' },
-    { id: 'rocket', label: 'Uzay Roketi', img: '/img/roket_step3.svg' },
-    { id: 'turtle', label: 'Yavaş Kaplumbağa', img: '/img/kaplumbaga_step3.svg' },
-    { id: 'cow', label: 'Benekli İnek', img: '/img/cow_step4.svg' },
+    // Köpekler (Dogs)
+    { id: 'dog-1', label: 'Tatlı Köpek 1', img: '/img/task_images/Cute-dog-drawing-ideas-1.jpg' },
+    { id: 'dog-2', label: 'Tatlı Köpek 2', img: '/img/task_images/Cute-dog-drawing-ideas-2.jpg' },
+    { id: 'dog-3', label: 'Tatlı Köpek 3', img: '/img/task_images/Cute-dog-drawing-ideas-3.jpg' },
+    { id: 'dog-4', label: 'Tatlı Köpek 4', img: '/img/task_images/Cute-dog-drawing-ideas-4.jpg' },
+    { id: 'dog-5', label: 'Tatlı Köpek 5', img: '/img/task_images/Cute-dog-drawing-ideas-5.jpg' },
+    { id: 'dog-6', label: 'Tatlı Köpek 6', img: '/img/task_images/Cute-dog-drawing-ideas-6.jpg' },
+    { id: 'dog-7', label: 'Tatlı Köpek 7', img: '/img/task_images/Cute-dog-drawing-ideas-7.jpg' },
+    { id: 'dog-8', label: 'Tatlı Köpek 8', img: '/img/task_images/Cute-dog-drawing-ideas-8.jpg' },
+    { id: 'dog-9', label: 'Tatlı Köpek 9', img: '/img/task_images/Cute-dog-drawing-ideas-9.jpg' },
+    { id: 'dog-10', label: 'Tatlı Köpek 10', img: '/img/task_images/Cute-dog-drawing-ideas-10.jpg' },
+    { id: 'dog-11', label: 'Tatlı Köpek 11', img: '/img/task_images/Cute-dog-drawing-ideas-11.jpg' },
+    { id: 'dog-12', label: 'Tatlı Köpek 12', img: '/img/task_images/Cute-dog-drawing-ideas-12.jpg' },
+    { id: 'dog-13', label: 'Tatlı Köpek 13', img: '/img/task_images/Cute-dog-drawing-ideas-13.jpg' },
+    { id: 'dog-15', label: 'Tatlı Köpek 14', img: '/img/task_images/Cute-dog-drawing-ideas-15.jpg' },
+
+    // Kediler (Cats)
+    { id: 'cat-3', label: 'Uykucu Kedi', img: '/img/task_images/cat-drawing-ideas-3.jpg' },
+    { id: 'cat-4', label: 'Meraklı Kedi', img: '/img/task_images/cat-drawing-ideas-4.jpg' },
+
+    // Karalamalar (Doodles)
+    { id: 'doodle-1', label: 'Basit Karalama 1', img: '/img/task_images/easy-doodle-drawings-1.webp' },
+    { id: 'doodle-2', label: 'Basit Karalama 2', img: '/img/task_images/easy-doodle-drawings-2.webp' },
+    { id: 'doodle-3', label: 'Basit Karalama 3', img: '/img/task_images/easy-doodle-drawings-3.webp' },
+    { id: 'doodle-4', label: 'Basit Karalama 4', img: '/img/task_images/easy-doodle-drawings-4.webp' },
+    { id: 'doodle-5', label: 'Basit Karalama 5', img: '/img/task_images/easy-doodle-drawings-5.webp' },
+    { id: 'doodle-6', label: 'Basit Karalama 6', img: '/img/task_images/easy-doodle-drawings-6.webp' },
+    { id: 'doodle-7', label: 'Basit Karalama 7', img: '/img/task_images/easy-doodle-drawings-7.webp' },
+    { id: 'doodle-8', label: 'Basit Karalama 8', img: '/img/task_images/easy-doodle-drawings-8.webp' },
+    { id: 'doodle-9', label: 'Basit Karalama 9', img: '/img/task_images/easy-doodle-drawings-9.webp' },
+    { id: 'doodle-10', label: 'Basit Karalama 10', img: '/img/task_images/easy-doodle-drawings-10.webp' },
+    { id: 'doodle-11', label: 'Basit Karalama 11', img: '/img/task_images/easy-doodle-drawings-11.webp' },
+    { id: 'doodle-12', label: 'Basit Karalama 12', img: '/img/task_images/easy-doodle-drawings-12.webp' },
+    { id: 'doodle-13', label: 'Basit Karalama 13', img: '/img/task_images/easy-doodle-drawings-13.webp' },
+    { id: 'doodle-14', label: 'Basit Karalama 14', img: '/img/task_images/easy-doodle-drawings-14.webp' },
+    { id: 'doodle-15', label: 'Basit Karalama 15', img: '/img/task_images/easy-doodle-drawings-15.webp' },
+    { id: 'doodle-16', label: 'Basit Karalama 16', img: '/img/task_images/easy-doodle-drawings-16.webp' },
+    { id: 'doodle-17', label: 'Basit Karalama 17', img: '/img/task_images/easy-doodle-drawings-17.webp' },
+    { id: 'doodle-18', label: 'Basit Karalama 18', img: '/img/task_images/easy-doodle-drawings-18.webp' },
+    { id: 'doodle-19', label: 'Basit Karalama 19', img: '/img/task_images/easy-doodle-drawings-19.webp' },
+    { id: 'doodle-20', label: 'Basit Karalama 20', img: '/img/task_images/easy-doodle-drawings-20.webp' },
+    { id: 'doodle-21', label: 'Basit Karalama 21', img: '/img/task_images/easy-doodle-drawings-21.webp' },
+
+    // Çiçekler (Flowers)
+    { id: 'flower-1', label: 'Zarif Çiçek 1', img: '/img/task_images/simple-flower-drawing-ideas-1.webp' },
+    { id: 'flower-2', label: 'Zarif Çiçek 2', img: '/img/task_images/simple-flower-drawing-ideas-2.webp' },
+    { id: 'flower-3', label: 'Zarif Çiçek 3', img: '/img/task_images/simple-flower-drawing-ideas-3.webp' },
+    { id: 'flower-4', label: 'Zarif Çiçek 4', img: '/img/task_images/simple-flower-drawing-ideas-4.webp' },
+    { id: 'flower-5', label: 'Zarif Çiçek 5', img: '/img/task_images/simple-flower-drawing-ideas-5.webp' },
+    { id: 'flower-6', label: 'Zarif Çiçek 6', img: '/img/task_images/simple-flower-drawing-ideas-6.webp' },
+    { id: 'flower-8', label: 'Zarif Çiçek 7', img: '/img/task_images/simple-flower-drawing-ideas-8.webp' },
+    { id: 'flower-9', label: 'Zarif Çiçek 8', img: '/img/task_images/simple-flower-drawing-ideas-9.webp' },
+    { id: 'flower-10', label: 'Zarif Çiçek 9', img: '/img/task_images/simple-flower-drawing-ideas-10.webp' },
+    { id: 'flower-11', label: 'Zarif Çiçek 10', img: '/img/task_images/simple-flower-drawing-ideas-11.jpg' },
+
+    // Diğer (Miscellaneous)
+    { id: 'misc-2', label: 'Eğlenceli Figür 1', img: '/img/task_images/2-2.webp' },
+    { id: 'misc-4', label: 'Eğlenceli Figür 2', img: '/img/task_images/4-2.webp' },
+    { id: 'misc-6', label: 'Eğlenceli Figür 3', img: '/img/task_images/6-2.webp' },
+    { id: 'misc-9', label: 'Eğlenceli Figür 4', img: '/img/task_images/9-2.webp' },
+    { id: 'misc-12', label: 'Eğlenceli Figür 5', img: '/img/task_images/12-2.webp' },
 ];
 
 export const GAME_TYPES = {
