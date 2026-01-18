@@ -138,19 +138,18 @@ export function BrandLogo() {
             {/* Curved Text Container */}
             <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 200 200">
                 <defs>
-                    {/* Top Arch - radius 85 to clear the inner circle perfectly */}
-                    <path id="top-curve" d="M 15,100 A 85,85 0 0,1 185,100" fill="none" />
-                    {/* Bottom Arch - radius 85 */}
-                    <path id="bottom-curve" d="M 15,100 A 85,85 0 0,0 185,100" fill="none" />
+                    {/* Radius 65 is safe: center 100 + 65 + font height ~22 = 187/200 */}
+                    <path id="top-curve" d="M 35,100 A 65,65 0 0,1 165,100" fill="none" />
+                    <path id="bottom-curve" d="M 35,100 A 65,65 0 0,0 165,100" fill="none" />
                 </defs>
 
-                <text fill="#6C5CE7" fontSize="26" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#6C5CE7" fontSize="22" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#top-curve" startOffset="50%" textAnchor="middle">
                         Haydi
                     </textPath>
                 </text>
 
-                <text fill="#00CEC9" fontSize="26" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#00CEC9" fontSize="22" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
                     <textPath href="#bottom-curve" startOffset="50%" textAnchor="middle" dominantBaseline="hanging">
                         ÇiziYorum
                     </textPath>

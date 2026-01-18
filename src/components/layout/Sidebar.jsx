@@ -47,7 +47,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 </button>
 
                 {/* Logo Area */}
-                <div className="flex flex-col items-center mb-4 mt-4 lg:mt-0">
+                <div className="flex flex-col items-center mb-14 mt-4 lg:mt-0">
                     <BrandLogo />
                 </div>
 
