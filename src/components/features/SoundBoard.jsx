@@ -9,39 +9,58 @@ const SOUNDS = {
 };
 
 export default function SoundBoard() {
-    const [activeSound, setActiveSound] = useState(null); // 'ocean', 'forest', etc.
+    const [activeSound, setActiveSound] = useState(null);
     const [volume, setVolume] = useState(0.5);
-    const audioRef = useRef(new Audio());
-
-    useEffect(() => {
-        audioRef.current.loop = true;
-        return () => {
-            audioRef.current.pause();
-        };
-    }, []);
+    const audioRef = useRef(null);
 
     const getAssetPath = (path) => {
-        const base = import.meta.env.BASE_URL;
+        const base = import.meta.env.BASE_URL || '/';
         const cleanPath = path.startsWith('/') ? path.slice(1) : path;
         return `${base}${cleanPath}`;
     };
 
+    // Update volume whenever it changes
     useEffect(() => {
-        if (activeSound) {
-            audioRef.current.src = getAssetPath(SOUNDS[activeSound].path);
+        if (audioRef.current) {
             audioRef.current.volume = volume;
-            audioRef.current.play().catch(e => console.error("Audio play failed", e));
+        }
+    }, [volume]);
+
+    // Handle sound toggle
+    const toggleSound = (key) => {
+        if (activeSound === key) {
+            setActiveSound(null);
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
         } else {
-            audioRef.current.pause();
+            setActiveSound(key);
+            // Volume will be sync'd by the effect or the property
+        }
+    };
+
+    // Handle play/pause when activeSound changes
+    useEffect(() => {
+        if (audioRef.current) {
+            if (activeSound) {
+                audioRef.current.src = getAssetPath(SOUNDS[activeSound].path);
+                audioRef.current.load(); // Reload with new source
+                audioRef.current.play().catch(e => console.warn("Audio play failed, waiting for user gesture:", e));
+            } else {
+                audioRef.current.pause();
+            }
         }
     }, [activeSound]);
 
-    useEffect(() => {
-        audioRef.current.volume = volume;
-    }, [volume]);
-
     return (
         <div className="bg-light/50 p-3 rounded-2xl backdrop-blur-sm">
+            {/* Hidden Audio Element */}
+            <audio
+                ref={audioRef}
+                loop
+                preload="auto"
+            />
+
             <h4 className="flex items-center text-xs font-bold text-gray-500 mb-2">
                 <Volume2 size={14} className="mr-2" />
                 Odaklanma Sesi
@@ -53,7 +72,7 @@ export default function SoundBoard() {
                     return (
                         <button
                             key={key}
-                            onClick={() => setActiveSound(isActive ? null : key)}
+                            onClick={() => toggleSound(key)}
                             title={data.label}
                             className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all text-lg
                         ${isActive
@@ -75,13 +94,13 @@ export default function SoundBoard() {
                     max="1"
                     step="0.01"
                     value={volume}
-                    onChange={(e) => {
+                    onInput={(e) => {
                         const newVol = parseFloat(e.target.value);
                         setVolume(newVol);
-                        if (audioRef.current) {
-                            audioRef.current.volume = newVol;
-                        }
+                        // Direct dom manipulation for instant feedback if React is slow
+                        if (audioRef.current) audioRef.current.volume = newVol;
                     }}
+                    onChange={(e) => setVolume(parseFloat(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-600 active:accent-blue-700"
                 />
                 <Volume2 size={14} className="text-gray-400" />
