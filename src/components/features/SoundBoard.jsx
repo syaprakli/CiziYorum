@@ -11,7 +11,12 @@ const SOUNDS = {
 export default function SoundBoard() {
     const [activeSound, setActiveSound] = useState(null);
     const [volume, setVolume] = useState(0.5);
+
+    // Web Audio Refs
     const audioRef = useRef(null);
+    const audioContextRef = useRef(null);
+    const gainNodeRef = useRef(null);
+    const sourceRef = useRef(null);
 
     const getAssetPath = (path) => {
         const base = import.meta.env.BASE_URL || '/';
@@ -19,15 +24,42 @@ export default function SoundBoard() {
         return `${base}${cleanPath}`;
     };
 
-    // Update volume whenever it changes
+    // Initialize Web Audio API
+    const initWebAudio = () => {
+        if (!audioContextRef.current) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioContextRef.current = new AudioContext();
+            gainNodeRef.current = audioContextRef.current.createGain();
+
+            // Connect GainNode to Destination (speakers)
+            gainNodeRef.current.connect(audioContextRef.current.destination);
+
+            // Connect Audio Element to GainNode
+            if (audioRef.current && !sourceRef.current) {
+                sourceRef.current = audioContextRef.current.createMediaElementSource(audioRef.current);
+                sourceRef.current.connect(gainNodeRef.current);
+            }
+        }
+
+        // Always try to resume context (handles browser auto-play policies)
+        if (audioContextRef.current.state === 'suspended') {
+            audioContextRef.current.resume();
+        }
+    };
+
+    // Sync volume with GainNode
     useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.volume = volume;
+        if (gainNodeRef.current) {
+            // Using gain.value instead of audio.volume for iOS support
+            gainNodeRef.current.gain.setValueAtTime(volume, audioContextRef.current.currentTime);
         }
     }, [volume]);
 
     // Handle sound toggle
     const toggleSound = (key) => {
+        // Essential: Initialize/Resume on user gesture
+        initWebAudio();
+
         if (activeSound === key) {
             setActiveSound(null);
             if (audioRef.current) {
@@ -35,29 +67,27 @@ export default function SoundBoard() {
             }
         } else {
             setActiveSound(key);
-            // Volume will be sync'd by the effect or the property
         }
     };
 
     // Handle play/pause when activeSound changes
     useEffect(() => {
-        if (audioRef.current) {
-            if (activeSound) {
-                audioRef.current.src = getAssetPath(SOUNDS[activeSound].path);
-                audioRef.current.load(); // Reload with new source
-                audioRef.current.play().catch(e => console.warn("Audio play failed, waiting for user gesture:", e));
-            } else {
-                audioRef.current.pause();
-            }
+        if (audioRef.current && activeSound) {
+            audioRef.current.src = getAssetPath(SOUNDS[activeSound].path);
+            audioRef.current.load();
+            audioRef.current.play().catch(e => console.warn("Audio play failed:", e));
+        } else if (audioRef.current) {
+            audioRef.current.pause();
         }
     }, [activeSound]);
 
     return (
         <div className="bg-light/50 p-3 rounded-2xl backdrop-blur-sm">
-            {/* Hidden Audio Element */}
+            {/* Standard Audio Element - now controlled by GainNode */}
             <audio
                 ref={audioRef}
                 loop
+                crossOrigin="anonymous"
                 preload="auto"
             />
 
@@ -94,14 +124,8 @@ export default function SoundBoard() {
                     max="1"
                     step="0.01"
                     value={volume}
-                    onInput={(e) => {
-                        const newVol = parseFloat(e.target.value);
-                        setVolume(newVol);
-                        // Direct dom manipulation for instant feedback if React is slow
-                        if (audioRef.current) audioRef.current.volume = newVol;
-                    }}
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-600 active:accent-blue-700"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
                 />
                 <Volume2 size={14} className="text-gray-400" />
             </div>
