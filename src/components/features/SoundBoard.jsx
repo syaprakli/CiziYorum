@@ -82,7 +82,7 @@ export default function SoundBoard() {
     }, [activeSound]);
 
     return (
-        <div className="bg-light/50 p-3 rounded-2xl backdrop-blur-sm">
+        <div className="bg-light/50 p-2 rounded-2xl backdrop-blur-sm">
             {/* Standard Audio Element - now controlled by GainNode */}
             <audio
                 ref={audioRef}
@@ -91,12 +91,12 @@ export default function SoundBoard() {
                 preload="auto"
             />
 
-            <h4 className="flex items-center text-xs font-bold text-gray-500 mb-2">
-                <Volume2 size={14} className="mr-2" />
+            <h4 className="flex items-center text-[10px] font-bold text-gray-400 mb-1">
+                <Volume2 size={12} className="mr-1.5" />
                 Odaklanma Sesi
             </h4>
 
-            <div className="flex justify-between mb-2 gap-1.5">
+            <div className="flex justify-between mb-1.5 gap-1">
                 {Object.entries(SOUNDS).map(([key, data]) => {
                     const isActive = activeSound === key;
                     return (
@@ -104,10 +104,10 @@ export default function SoundBoard() {
                             key={key}
                             onClick={() => toggleSound(key)}
                             title={data.label}
-                            className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all text-lg
+                            className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all text-base
                         ${isActive
-                                    ? 'bg-white shadow-pop scale-110 border-2 border-secondary'
-                                    : 'bg-white/50 hover:bg-white hover:scale-105'
+                                    ? 'bg-white shadow-pop scale-105 border-2 border-secondary'
+                                    : 'bg-white/50 hover:bg-white'
                                 }`}
                         >
                             {data.icon}
@@ -116,8 +116,8 @@ export default function SoundBoard() {
                 })}
             </div>
 
-            <div className="flex items-center gap-2">
-                <VolumeX size={14} className="text-gray-400" />
+            <div className="flex items-center gap-1.5">
+                <VolumeX size={12} className="text-gray-400" />
                 <input
                     type="range"
                     min="0"
@@ -125,9 +125,9 @@ export default function SoundBoard() {
                     step="0.01"
                     value={volume}
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                    className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
                 />
-                <Volume2 size={14} className="text-gray-400" />
+                <Volume2 size={12} className="text-gray-400" />
             </div>
         </div>
     );

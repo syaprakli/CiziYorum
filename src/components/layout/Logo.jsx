@@ -48,13 +48,13 @@ export default function Logo() {
                     fill="transparent"
                 />
 
-                <text className="font-heading font-bold fill-primary text-[24px] uppercase tracking-widest">
+                <text className="font-heading font-bold fill-primary text-[24px] uppercase tracking-widest" style={{ fontFamily: '"Baloo 2", cursive' }}>
                     <textPath href="#textPathTop" startOffset="50%" textAnchor="middle">
                         Haydi
                     </textPath>
                 </text>
 
-                <text className="font-heading font-bold fill-secondary text-[22px] uppercase tracking-widest">
+                <text className="font-heading font-bold fill-secondary text-[22px] uppercase tracking-widest" style={{ fontFamily: '"Baloo 2", cursive' }}>
                     <textPath href="#textPathBottom" startOffset="50%" textAnchor="middle" side="left">
                         ÇiziYorum
                     </textPath>
@@ -80,7 +80,7 @@ export default function Logo() {
                     <defs>
                         <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
                     </defs>
-                    <text fontSize="11" fontWeight="bold" fill="#6C5CE7" letterSpacing="2">
+                    <text fontSize="11" fontWeight="bold" fill="#6C5CE7" letterSpacing="2" style={{ fontFamily: '"Baloo 2", cursive' }}>
                         <textPath xlinkHref="#circle" startOffset="0%">
                             HAYDİ • ÇİZİYORUM •
                         </textPath>
@@ -143,13 +143,13 @@ export function BrandLogo() {
                     <path id="bottom-curve" d="M 35,100 A 65,65 0 0,0 165,100" fill="none" />
                 </defs>
 
-                <text fill="#6C5CE7" fontSize="22" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#6C5CE7" fontSize="22" fontWeight="bold" fontFamily='"Baloo 2", cursive' letterSpacing="0.05em">
                     <textPath href="#top-curve" startOffset="50%" textAnchor="middle">
                         Haydi
                     </textPath>
                 </text>
 
-                <text fill="#00CEC9" fontSize="22" fontWeight="bold" fontFamily="Fredoka" letterSpacing="0.05em">
+                <text fill="#00CEC9" fontSize="22" fontWeight="bold" fontFamily='"Baloo 2", cursive' letterSpacing="0.05em">
                     <textPath href="#bottom-curve" startOffset="50%" textAnchor="middle" dominantBaseline="hanging">
                         ÇiziYorum
                     </textPath>
