@@ -62,20 +62,21 @@ export default function Sidebar({ isOpen, onClose }) {
                             onClick={() => handleNavigation(item.id)}
                         />
                     ))}
+
+                    {/* Settings - Moved here below Yükle & Kontrol */}
+                    <div className="pt-2 border-t border-gray-100/50">
+                        <SidebarItem
+                            icon={Settings}
+                            label="Ayarlar"
+                            active={activeTab === 'settings'}
+                            onClick={() => handleNavigation('settings')}
+                        />
+                    </div>
                 </nav>
 
-                <div className="mt-auto mb-4">
+                {/* SoundBoard - Moved to the very bottom */}
+                <div className="mt-4 pb-2">
                     <SoundBoard />
-                </div>
-
-                {/* Settings */}
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                    <SidebarItem
-                        icon={Settings}
-                        label="Ayarlar"
-                        active={activeTab === 'settings'}
-                        onClick={() => handleNavigation('settings')}
-                    />
                 </div>
             </aside>
         </>

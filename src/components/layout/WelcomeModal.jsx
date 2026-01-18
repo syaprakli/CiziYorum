@@ -47,24 +47,36 @@ export default function WelcomeModal() {
             return;
         }
 
-        const profileData = {
-            name: name,
-            about: about || 'Merhaba! Ben resim çizmeyi çok seviyorum.',
-            age: age || '8',
-            favColor: favColor || 'Mavi',
-            favAnimal: favAnimal || 'Kedi'
-        };
+        try {
+            // Save Profile Data
+            const profileData = {
+                name: name,
+                about: about || 'Merhaba! Ben resim çizmeyi çok seviyorum.',
+                age: age || '8',
+                favColor: favColor || 'Mavi',
+                favAnimal: favAnimal || 'Kedi'
+            };
 
-        localStorage.setItem('userProfileData', JSON.stringify(profileData));
+            localStorage.setItem('userProfileData', JSON.stringify(profileData));
 
-        if (photo) {
-            localStorage.setItem('appLogo', photo);
-            localStorage.setItem('userProfileImage', photo);
+            if (photo) {
+                try {
+                    localStorage.setItem('appLogo', photo);
+                    localStorage.setItem('userProfileImage', photo);
+                } catch (e) {
+                    console.warn("Fotoğraf kaydedilemedi (Kota dolmuş olabilir):", e);
+                    // Continue anyway, it's not fatal
+                }
+            }
+
+            localStorage.setItem('isProfileSetupComplete', 'true');
+            window.dispatchEvent(new Event('logoChange'));
+        } catch (error) {
+            console.error("Profil kaydedilirken hata oluştu:", error);
+            // Even if global save fails, we try to move to step 2 so user isn't stuck
         }
 
-        localStorage.setItem('isProfileSetupComplete', 'true');
-        window.dispatchEvent(new Event('logoChange'));
-
+        // Move to AI Info step - ensuring this happens
         setStep(2);
     };
 
@@ -74,6 +86,7 @@ export default function WelcomeModal() {
     };
 
     const goToSettings = () => {
+        window.open('https://aistudio.google.com/app/apikey', '_blank');
         setIsOpen(false);
         navigate('/settings');
     };
@@ -90,12 +103,12 @@ export default function WelcomeModal() {
                         <div className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
                         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
-                        <div className="text-center mb-4 relative z-10">
+                        <div className="text-center mb-3 relative z-10">
                             <h2 className="text-2xl font-heading font-bold text-dark mb-1">Hoş Geldin Ressam! 👋</h2>
                             <p className="text-sm text-gray-500 font-medium">Profilini hemen oluştur!</p>
                         </div>
 
-                        <div className="space-y-4 relative z-10">
+                        <div className="space-y-3 relative z-10">
                             {/* Photo Upload */}
                             <div className="flex flex-col items-center">
                                 <div
@@ -122,7 +135,7 @@ export default function WelcomeModal() {
                                 />
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-2 gap-2">
                                 <div className="col-span-2">
                                     <label className="block text-[10px] font-bold text-gray-500 mb-1 ml-1">Adın Ne?</label>
                                     <div className="relative">
