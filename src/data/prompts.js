@@ -210,8 +210,18 @@ export const SHAPE_PROMPTS = [
     "Bir yaprak şekli 🍃 çiz. Bu bir rüzgar sörfü mü, yoksa bir elf kulağı mı?"
 ];
 
+export const DRAW_FROM_IMAGE_TASKS = [
+    { id: 'cat', label: 'Sevimli Kedi', img: '/img/cat_step3.svg' },
+    { id: 'fish', label: 'Renkli Balık', img: '/img/balik_step3.svg' },
+    { id: 'flower', label: 'Güzel Çiçek', img: '/img/cicek_step3.svg' },
+    { id: 'rocket', label: 'Uzay Roketi', img: '/img/roket_step3.svg' },
+    { id: 'turtle', label: 'Yavaş Kaplumbağa', img: '/img/kaplumbaga_step3.svg' },
+    { id: 'cow', label: 'Benekli İnek', img: '/img/cow_step4.svg' },
+];
+
 export const GAME_TYPES = {
     simple: { title: "Basit Çizimler", desc: "Kedi, Araba, Elma gibi kolay görevler.", color: "bg-green-500", minLevel: 1 },
+    imageTask: { title: "Resimden Çiz", desc: "Gördüğün resmi çizmeye çalış!", color: "bg-blue-400", minLevel: 1 },
     jar: { title: "Sihirli Kavanozlar", desc: "3 alakasız kelimeyi birleştir.", color: "bg-primary", minLevel: 2 },
     shape: { title: "Şekil Dedektifi", desc: "Bir şekli hayvana dönüştür!", color: "bg-orange-400", minLevel: 3 },
     absurd: { title: "Sıfat + İsim Çılgınlığı", desc: "Çılgın fikirler bul!", color: "bg-accent", minLevel: 4 },

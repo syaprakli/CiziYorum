@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Shuffle, Zap, Palette, Brush, BrainCircuit, FlaskConical, Flame, Lock, Calendar, Star, Crown } from 'lucide-react';
+import { Shuffle, Zap, Palette, Brush, BrainCircuit, FlaskConical, Flame, Lock, Calendar, Star, Crown, Image as ImageIcon } from 'lucide-react';
 import IdeaCard from '../components/features/IdeaCard';
 import GameModal from '../components/features/GameModal';
 import { calculateLevel, LEVELS } from '../data/gamification';
@@ -72,6 +72,15 @@ export default function Dashboard() {
             icon: Palette,
             color: GAME_TYPES.simple.color,
             minLevel: GAME_TYPES.simple.minLevel
+        },
+        {
+            id: 'imageTask',
+            title: GAME_TYPES.imageTask.title,
+            desc: GAME_TYPES.imageTask.desc,
+            icon: ImageIcon,
+            color: GAME_TYPES.imageTask.color,
+            minLevel: GAME_TYPES.imageTask.minLevel,
+            isNew: true
         },
         {
             id: 'jar',

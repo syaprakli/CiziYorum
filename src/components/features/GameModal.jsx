@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { X, RefreshCcw, ArrowRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ADJECTIVES, NOUNS, SCAMPER_QUESTIONS, HARD_TASKS, SHAPE_PROMPTS } from '../../data/prompts';
+import { ADJECTIVES, NOUNS, SCAMPER_QUESTIONS, HARD_TASKS, SHAPE_PROMPTS, DRAW_FROM_IMAGE_TASKS } from '../../data/prompts';
 import { generateCreativePrompt } from '../../services/gemini';
 
 export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskContent }) {
     const [prompt, setPrompt] = useState(taskContent || 'Düşünülüyor...');
+    const [imageTask, setImageTask] = useState(null);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -63,6 +64,11 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
             case 'hard':
                 newPrompt = r(HARD_TASKS);
                 break;
+            case 'imageTask':
+                const task = r(DRAW_FROM_IMAGE_TASKS);
+                setImageTask(task);
+                newPrompt = `Bakalım bunu çizebilir misin: ${task.label}`;
+                break;
             default:
                 newPrompt = "Sürpriz bir şeyler çiz!";
         }
@@ -107,16 +113,27 @@ export default function GameModal({ gameId, onClose, gameTitle, gameColor, taskC
                     </div>
 
                     {/* Body */}
-                    <div className="p-8 text-center min-h-[250px] flex flex-col items-center justify-center">
+                    <div className="p-8 text-center min-h-[300px] flex flex-col items-center justify-center bg-white">
                         {loading ? (
                             <div className="animate-pulse flex flex-col items-center">
                                 <Sparkles className="text-primary mb-4 animate-spin-slow" size={48} />
                                 <p className="text-xl text-gray-400 font-bold">{prompt}</p>
                             </div>
                         ) : (
-                            <p className="text-2xl font-bold text-dark leading-relaxed whitespace-pre-line">
-                                {prompt}
-                            </p>
+                            <div className="flex flex-col items-center gap-6">
+                                {gameId === 'imageTask' && imageTask && (
+                                    <div className="w-48 h-48 bg-gray-50 rounded-3xl p-4 flex items-center justify-center shadow-inner mb-2">
+                                        <img
+                                            src={imageTask.img}
+                                            alt={imageTask.label}
+                                            className="max-w-full max-h-full object-contain"
+                                        />
+                                    </div>
+                                )}
+                                <p className="text-2xl font-bold text-dark leading-relaxed whitespace-pre-line">
+                                    {prompt}
+                                </p>
+                            </div>
                         )}
                     </div>
 
